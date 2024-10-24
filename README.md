@@ -207,6 +207,31 @@ The model's performance at **0°C** shows very strong predictive power, with an 
 
 - **Prediction Accuracy**: The **Mean Absolute Error (MAE)** of 0.0142 suggests that, on average, the model’s SOC predictions differ from the actual values by just **1.42%**, which is quite small, especially given the difficult conditions at lower temperatures.
 
+
+#### Predictions at 10°C
+- **Mean Absolute Error (MAE)**: 0.0127  
+- **Mean Squared Error (MSE)**: 0.0003229  
+- **R-squared (R²)**: 0.9947
+
+### Insights from the Predictions at 0°C and 10°C
+
+- **Performance at 0°C**: The model performed well under the challenging condition of 0°C, with a **Mean Absolute Error** of 1.42%. This demonstrates the model's robustness under low-temperature conditions, which are typically more volatile for batteries.
+  
+- **Performance at 10°C**: The model performed similarly at 10°C, with a **Mean Absolute Error** of 1.27% and an **R-squared score** of 0.9947. However, upon zooming into the predictions, some fluctuations can still be observed during the discharge cycles.
+
+#### Fluctuations in Predictions at 10°C:
+- **Zoomed-In View**: The following plot shows some fluctuations in SOC predictions when zooming in on the discharge region at 10°C:
+  
+  ![Zoomed In Plot at 10°C](results/zoomed_plot_10degC_image.png)
+  
+  These fluctuations suggest that the model may be overreacting to small changes in input signals or may need further adjustments to capture long-term dependencies.
+
+- **Potential Improvements**: 
+  - **Increase Sequence Length Further**: Increasing the sequence length beyond 100 (e.g., to 200 or higher) might help smooth out these fluctuations.
+  - **Data Smoothing**: Applying more aggressive data smoothing techniques (e.g., higher rolling averages) could help reduce noise in the input data.
+  - **Regularization**: Increasing the regularization strength in the Dense layers might prevent overfitting to short-term variations in the data.
+  - **Ensemble Methods**: Another approach could involve using ensemble models to average predictions and reduce noise.
+
 ### Comparative Analysis: Sequence Length 10 vs 100
 
 - **Fluctuations in Predictions**:  
@@ -218,9 +243,15 @@ The model's performance at **0°C** shows very strong predictive power, with an 
 
     ![Prediction with Sequence Length 100](results/soc_predictions_image.png)
 
+    ### Comparative Analysis: Sequence Length 10 vs 100
+
+- **Fluctuations in Predictions**:  
+  - With a sequence length of 10, the SOC predictions exhibited more fluctuations, especially in the lower temperatures like 0°C.
+  - After increasing the sequence length to 100, the fluctuations were significantly reduced, resulting in smoother predictions across temperatures.
+
 - **Model Stability**:  
   - The longer sequence length of 100 allowed the model to capture more temporal dependencies, leading to fewer oscillations in the predicted SOC values, especially in regions where the SOC remains stable (such as during long charging cycles).
-
+  
 ### Transfer Learning Results
 
 Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. The transfer learning approach is expected to improve the model's adaptability across different battery chemistries or operating conditions.
