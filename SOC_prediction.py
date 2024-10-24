@@ -1,6 +1,43 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+"""
+SOC Estimation using LSTM with Multiple Temperature Test Sets
+
+Author: Usama Yasir Khan , Battery AI Engineer
+
+Description:
+This script implements a Long Short-Term Memory (LSTM) neural network to predict the State of Charge (SOC) of a battery 
+based on various battery parameters such as voltage, current, temperature, and their rolling averages. The data has 
+been collected under different temperature conditions (-10°C, 0°C, 10°C, and 25°C) and is used to both train and 
+validate the model.
+
+Key steps in the script:
+1. **Data Loading**: The script loads both training and test data from .mat files, which include normalized battery 
+   parameters across different temperature ranges.
+   
+2. **Sequence Creation**: Time series data is reshaped into sequences with a defined timestep to capture temporal patterns.
+
+3. **LSTM Model**: The script defines a sequential LSTM model with dropout regularization and L2 regularization to 
+   prevent overfitting. The model architecture includes LSTM and Dense layers for SOC prediction.
+
+4. **Model Training**: The model is trained with early stopping and learning rate reduction callbacks based on validation 
+   performance to avoid overfitting and to optimize the learning rate during training.
+
+5. **Evaluation on Test Sets**: The model is evaluated on test sets representing different temperatures, specifically 
+   -10°C, 0°C, 10°C, and 25°C. Evaluation metrics include Mean Absolute Error (MAE), Mean Squared Error (MSE), and 
+   R-squared (R²). 
+
+6. **Visualization**: SOC predictions are plotted and compared with actual SOC values for each temperature test. 
+   These plots are saved in HTML format for further analysis.
+
+7. **Model Saving**: The trained model is saved as 'lstm_model_temperature.h5' for future use or deployment.
+   
+This script demonstrates the importance of testing machine learning models under various environmental conditions to 
+assess performance across different operating ranges.
+"""
+
+
 import scipy.io
 import pandas as pd
 import numpy as np
