@@ -231,3 +231,16 @@ Contributions to this project are welcome. If you'd like to contribute, please o
 ## License
 
 This project is licensed under the MIT License.
+
+## References
+
+This project uses the **LG 18650HG2 Li-ion Battery Data**, which was collected and made publicly available by:
+
+- **Philip Kollmeyer**, **Carlos Vidal**, **Mina Naguib**, and **Michael Skells**.
+- McMaster University, Hamilton, Ontario, Canada.
+- Published: 6 March 2020.
+- DOI: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3)
+
+If you use this data for any purpose, please make sure to cite it appropriately as:
+
+> Vidal, C., Kollmeyer, P., Naguib, M., & Skells, M. (2020). Robust xEV Battery State-of-Charge Estimator Design using Deep Neural Networks, Mendeley Data. DOI: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3)
