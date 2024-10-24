@@ -230,12 +230,20 @@ Below is the full plot showing the **Actual vs Predicted SOC at -10°C**:
 ![SOC Predictions at -10°C](results/soc_predictions_image_-10degree.png)
 
 
-#### Fluctuations in Predictions at -10°C:
-- **Zoomed-In View**: The following plot shows some fluctuations in SOC predictions when zooming in on the discharge region at -10°C:
+#### Fluctuations and Noise at -10°C:
+- **Significant Noise in Discharge**: Upon closer inspection, the **-10°C** predictions exhibit significant noise, especially in the discharge dynamic patterns. This suggests that the model is having difficulty accurately modeling battery behavior at this extreme low temperature, where the dynamics of the battery change more drastically.
+
+- **Zoomed-In View of Discharge at -10°C**:
   
   ![Zoomed In Plot at -10°C](results/zoomed_plot_-10degC_image.png)
   
-  These fluctuations suggest that the model may be overreacting to small changes in input signals or may need further adjustments to capture long-term dependencies.
+  The zoomed-in plot highlights the significant fluctuations observed during the discharge cycle. These fluctuations suggest that the model may be overreacting to small variations in input signals, particularly under harsh conditions like **-10°C**.
+
+#### Comparative Performance and Analysis:
+
+- **0°C vs -10°C**: Comparing the **0°C** and **-10°C** predictions, we observe more significant deviations at **-10°C**, particularly in the discharge dynamics. This indicates that the model may need further refinement to handle the more complex behavior of batteries at very low temperatures.
+  
+- **25°C Results**: The **25°C** results demonstrate that the model is more stable but some gap between actual and predicting at normal operating temperatures, as expected, with minor noise but overall strong performance.
 
 - **Potential Improvements**: 
   - **Increase Sequence Length Further**: Increasing the sequence length beyond 100 (e.g., to 200 or higher) might help smooth out these fluctuations.
