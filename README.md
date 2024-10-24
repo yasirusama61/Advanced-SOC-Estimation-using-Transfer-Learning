@@ -102,16 +102,17 @@ The project is built using Python, and the following dependencies are required:
     To train the LSTM model on battery data:
     - Prepare your dataset and ensure it has the required columns (Voltage, Current, Temperature, SOC).
     - Run the training script:
-      `python train_lstm.py --data <data/> --epochs 50`
+    ```bash
+    python train_lstm.py --data <data/> --epochs 50
   
-  ### Transfer Learning
-  - To apply transfer learning, you can fine-tune the pre-trained LSTM model on a new dataset:
-
+### Transfer Learning
+    To apply transfer learning, you can fine-tune the pre-trained LSTM model on a new dataset:
     - Load the pre-trained model.
     - Fine-tune the model:
-        `python transfer_learning.py --pretrained_model <path-to-model> --data <path-to-new-dataset>`
+    ```bash
+    python transfer_learning.py --pretrained_model <models/lstm_model.h5> --data <path/dataset>
 
-  ### Model Architecture
+### Model Architecture
 
 The LSTM model used for SOC estimation consists of the following layers:
 
