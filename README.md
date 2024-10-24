@@ -57,11 +57,17 @@ The dataset includes both **raw** and **processed** data:
 The processed data has been pre-normalized and cleaned to prepare it for training machine learning models.
 
 ### Data Columns:
-- `Time [s]`: Time in seconds.
+
+The processed dataset used for training the LSTM model includes the following columns:
+
 - `Voltage [V]`: Measured cell terminal voltage.
 - `Current [A]`: Measured current in amps.
-- `Temperature [°C]`: Measured battery case temperature (middle of the battery).
-- `SOC`: State of Charge (target for prediction).
+- `Temperature [°C]`: X-averaged cell temperature.
+- `Voltage Rolling [V]`: Rolling average of voltage over a defined window.
+- `Current Rolling [A]`: Rolling average of current over a defined window.
+- `SOC`: State of Charge, used as the target variable for prediction.
+
+The processed data has been normalized, and these features were engineered to improve the model’s ability to capture the dynamics of SOC over time. The rolling averages of voltage and current help capture the time-dependent trends, providing additional information for the LSTM model.
 
 ## Requirements
 
