@@ -150,3 +150,39 @@ The model is trained with early stopping and learning rate reduction strategies:
 - **Batch Size**: 250
 - **Validation Data**: Provided validation dataset (`X_val_seq`, `y_val_seq`).
 - **Callbacks**: Early stopping and learning rate reduction are used as callbacks.
+
+## Results
+
+### Initial Training (LSTM)
+
+The LSTM model was trained on the original dataset and achieved the following results:
+
+- **Mean Absolute Error (MAE)**: 0.0107  
+  - This indicates that, on average, the predictions were off by about 0.0107 units from the actual State of Charge (SOC). Lower values indicate better performance.
+  
+- **Mean Squared Error (MSE)**: 0.000216  
+  - This is a measure of how close the predictions are to the actual SOC, with a lower value indicating fewer large errors. The small MSE reflects that the model learned well from the dataset.
+  
+- **R-squared (R²)**: 0.997  
+  - This value indicates how well the model explains the variance in the SOC data. A value of 0.997 means the model explains 99.7% of the variance, which is considered excellent.
+
+These results demonstrate that the LSTM model can predict SOC with high accuracy on the original dataset.
+
+### Transfer Learning Results
+
+Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. The transfer learning approach is expected to improve the model's adaptability across different battery chemistries or operating conditions.
+
+The results after applying transfer learning will be updated soon.
+
+- **Mean Absolute Error (MAE)**: *To be added*  
+- **R-squared (R²)**: *To be added*  
+
+We expect the transfer learning model to perform well, possibly with similar or improved metrics compared to the initial training, depending on the new dataset's complexity and similarity to the original data.
+
+## Contributing
+
+Contributions to this project are welcome. If you'd like to contribute, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
