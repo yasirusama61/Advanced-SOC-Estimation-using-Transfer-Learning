@@ -301,6 +301,49 @@ Below is the plot showing the **Actual vs Predicted SOC at 25°C**:
 - **Model Stability**:  
   - The longer sequence length of 100 allowed the model to capture more temporal dependencies, leading to fewer oscillations in the predicted SOC values, especially in regions where the SOC remains stable (such as during long charging cycles).
 
+### Extended Results and Conclusions
+
+#### Model Performance Overview:
+- The LSTM model demonstrated strong overall performance across a wide range of operating temperatures, from **-10°C** to **25°C**. However, the model's predictive capability shows temperature-dependent variability, which is particularly evident during discharge cycles.
+
+#### Key Observations:
+1. **Consistency at Normal Temperatures (25°C)**:
+   - The model showed its best performance at **25°C**, with a **Mean Absolute Error** of 2.04% and an **R-squared score** of 0.9924%. This indicates that the model captures the general battery dynamics well in moderate conditions, which is expected given that most battery behaviors are more stable at room temperature.
+   - The predictions at 25°C exhibit smooth transitions with minimal noise, which indicates that the model is well-suited for environments where thermal volatility is minimal.
+   
+2. **Challenges at Low Temperatures (-10°C and 0°C)**:
+   - At **-10°C**, the model faced the most difficulty, exhibiting significant noise in the discharge regions and a **Mean Absolute Error** of 1.27%. The model tends to overreact to minor changes in input signals, leading to large fluctuations, particularly in the SOC predictions during discharge cycles.
+   - The performance at **0°C** was slightly better, with a **Mean Absolute Error** of 1.42%, but the model still exhibited fluctuations, albeit to a lesser extent than at -10°C.
+   - Low-temperature predictions are challenging due to the complex and nonlinear behavior of batteries under colder conditions, where the internal resistance increases and voltage drops more sharply. These behaviors are harder for the LSTM model to generalize without specific temperature-driven features or adjustments.
+
+3. **Intermediate Temperature Performance (10°C)**:
+   - At **+10°C**, the model performed similarly to the lower temperatures, with a **Mean Absolute Error** of 2.24% and an **R-squared score** of 0.9891%. Despite capturing the general trend, the model's performance showed slight deterioration compared to predictions at 25°C.
+   - Like the lower temperatures, the model struggled to predict the discharge dynamics as precisely, which indicates that while the model is robust at higher temperatures, intermediate temperatures still exhibit challenges.
+
+#### Temperature-Dependent Behavior:
+- **Voltage-SOC Sensitivity**: Batteries exhibit different voltage-SOC behavior at lower temperatures. The SOC-to-voltage mapping becomes more non-linear, and this could explain why the model shows more fluctuation at **-10°C** and **+10°C**. Batteries typically exhibit a steeper voltage drop during discharge at low temperatures, which makes it harder for the model to capture the true state of charge accurately.
+- **Overfitting to Minor Variations**: The fluctuations observed, particularly at **-10°C**, suggest that the model may be overfitting to smaller variations in sensor data. This might occur because, at lower temperatures, there is more variability in the input features like voltage and current due to increased internal resistance. This leads the model to overreact to short-term changes instead of focusing on longer-term trends.
+
+#### Recommendations for Improvement:
+1. **Temperature-Specific Feature Engineering**:
+   - Introduce temperature as a feature in the LSTM model to allow it to better adapt to the varying battery behavior at different temperatures. This will help the model learn different SOC patterns based on the external temperature conditions, improving its adaptability across ranges.
+   
+2. **Increase Sequence Length**:
+   - Increasing the sequence length beyond 100 timesteps would allow the model to capture long-term dependencies in the data. This is particularly important for capturing the non-linear voltage dynamics at lower temperatures and during discharge phases.
+   
+3. **Regularization**:
+   - Add more regularization to the model (e.g., L2 regularization or dropout) to prevent the model from overfitting to minor variations in the data, especially during low-temperature discharge phases.
+   
+4. **Data Smoothing and Noise Reduction**:
+   - Apply smoothing techniques like higher-order rolling averages on input data such as voltage and current to reduce the noise that may be affecting the model's predictions at extreme temperatures.
+
+5. **Ensemble Learning**:
+   - An ensemble of models trained on different subsets of the data or using different architectures could help smooth the final predictions by averaging out the errors from each model, potentially reducing the noise in discharge cycles.
+
+#### Final Conclusion:
+The LSTM model provides promising results, especially at **25°C** and **0°C**, where it demonstrates strong predictive power. However, it struggles more at extreme low temperatures, particularly during the discharge phases at **-10°C**. With additional feature engineering, such as incorporating temperature as a model input and applying advanced regularization techniques, there is significant potential to further improve the model’s robustness, particularly under challenging conditions like low temperatures.
+
+
 ### Transfer Learning Results
 
 Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. The transfer learning approach is expected to improve the model's adaptability across different battery chemistries or operating conditions.
