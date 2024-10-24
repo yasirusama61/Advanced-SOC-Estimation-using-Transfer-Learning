@@ -88,7 +88,9 @@ The project is built using Python, and the following dependencies are required:
    cd Advanced-SOC-Estimation-using-Transfer-Learning
 
 2. Install the required dependencies:
-  `pip install -r requirements.txt`
+   ```bash
+   pip install -r requirements.txt
+   
 3. Set up your environment (optional, using virtualenv):
   - `python -m venv venv`
   - `source venv/bin/activate ` # Linux/Mac
