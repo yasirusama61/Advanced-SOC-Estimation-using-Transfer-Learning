@@ -218,16 +218,16 @@ The model's performance at **0°C** shows very strong predictive power, with an 
 - **Mean Squared Error (MSE)**: 0.0003229  
 - **R-squared (R²)**: 0.9947
 
-### Insights from the Predictions at 0°C and 10°C
+### Insights from the Predictions at 0°C and -10°C
 
 - **Performance at 0°C**: The model performed well under the challenging condition of 0°C, with a **Mean Absolute Error** of 1.42%. This demonstrates the model's robustness under low-temperature conditions, which are typically more volatile for batteries.
   
-- **Performance at 10°C**: The model performed similarly at 10°C, with a **Mean Absolute Error** of 1.27% and an **R-squared score** of 0.9947. However, upon zooming into the predictions, some fluctuations can still be observed during the discharge cycles.
+- **Performance at -10°C**: The model performed similarly at **-10°C**, with a **Mean Absolute Error** of 1.27% and an **R-squared score** of 0.9947. However, upon zooming into the predictions, some fluctuations can still be observed during the discharge cycles.
 
-#### Fluctuations in Predictions at 10°C:
-- **Zoomed-In View**: The following plot shows some fluctuations in SOC predictions when zooming in on the discharge region at 10°C:
+#### Fluctuations in Predictions at -10°C:
+- **Zoomed-In View**: The following plot shows some fluctuations in SOC predictions when zooming in on the discharge region at -10°C:
   
-  ![Zoomed In Plot at 10°C](results/zoomed_plot_10degC_image.png)
+  ![Zoomed In Plot at -10°C](results/zoomed_plot_-10degC_image.png)
   
   These fluctuations suggest that the model may be overreacting to small changes in input signals or may need further adjustments to capture long-term dependencies.
 
