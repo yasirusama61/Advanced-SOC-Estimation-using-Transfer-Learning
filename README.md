@@ -60,9 +60,9 @@ The processed data has been pre-normalized and cleaned to prepare it for trainin
 
 The processed dataset used for training the LSTM model includes the following columns:
 
-- `Voltage [V]`: Measured cell terminal voltage.
+- `Voltage [V]`: Measured cell Voltage.
 - `Current [A]`: Measured current in amps.
-- `Temperature [°C]`: X-averaged cell temperature.
+- `Temperature [°C]`: Temperature.
 - `Voltage Rolling [V]`: Rolling average of voltage over a defined window.
 - `Current Rolling [A]`: Rolling average of current over a defined window.
 - `SOC`: State of Charge, used as the target variable for prediction.
