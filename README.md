@@ -153,20 +153,51 @@ The model is trained with early stopping and learning rate reduction strategies:
 
 ## Results
 
-### Initial Training (LSTM)
+### Initial Training (LSTM with Sequence Length 10)
 
-The LSTM model was trained on the original dataset and achieved the following results:
+The LSTM model was originally trained on the dataset with a sequence length of 10, and achieved the following results:
 
 - **Mean Absolute Error (MAE)**: 0.0107  
-  - This indicates that, on average, the predictions were off by about 0.0107 units from the actual State of Charge (SOC). Lower values indicate better performance.
+  - This indicates that, on average, the predictions were off by about 0.0107 units from the actual State of Charge (SOC).
   
 - **Mean Squared Error (MSE)**: 0.000216  
-  - This is a measure of how close the predictions are to the actual SOC, with a lower value indicating fewer large errors. The small MSE reflects that the model learned well from the dataset.
+  - The MSE value reflects that the model has a low prediction error across the dataset.
   
 - **R-squared (R²)**: 0.997  
-  - This value indicates how well the model explains the variance in the SOC data. A value of 0.997 means the model explains 99.7% of the variance, which is considered excellent.
+  - This shows that the model can explain 99.7% of the variance in the SOC data.
 
-These results demonstrate that the LSTM model can predict SOC with high accuracy on the original dataset.
+### LSTM Training with Sequence Length 100
+
+After increasing the sequence length to 100, the model achieved the following metrics:
+
+- **Mean Absolute Error (MAE)**: 0.0142  
+  - This indicates that the average error in SOC predictions slightly increased with the longer sequence length.
+  
+- **Mean Squared Error (MSE)**: 0.0003058  
+  - The MSE also slightly increased compared to the initial training.
+  
+- **R-squared (R²)**: 0.9957  
+  - The model still explains 99.57% of the variance in the data, which is a high level of accuracy.
+
+### Reduced Fluctuations in Prediction Plot
+
+By increasing the sequence length from 10 to 100, the LSTM model demonstrated fewer fluctuations in the SOC prediction plot. The predictions have become more stable, particularly during charge and discharge cycles, indicating that the longer sequence helps the model capture more meaningful time dependencies.
+
+### Loss Curves
+
+Below is the plot showing the **Training and Validation Loss over Epochs**:
+
+![Training and Validation Loss](results/loss_curve_image.png)
+
+This plot demonstrates that both training and validation loss decreased significantly in the early epochs and leveled off as training progressed, indicating stable model convergence.
+
+### SOC Predictions
+
+The following plot compares the **Actual vs Predicted SOC Values**:
+
+![Actual vs Predicted SOC](results/soc_predictions_image.png)
+
+This plot shows that the LSTM model's predictions closely match the actual SOC values, with fewer fluctuations and smoother predictions during the charge and discharge cycles.
 
 ### Transfer Learning Results
 
