@@ -224,6 +224,12 @@ The model's performance at **0°C** shows very strong predictive power, with an 
   
 - **Performance at -10°C**: The model performed similarly at **-10°C**, with a **Mean Absolute Error** of 1.27% and an **R-squared score** of 0.9947. However, upon zooming into the predictions, some fluctuations can still be observed during the discharge cycles.
 
+#### SOC Predictions at -10°C:
+Below is the full plot showing the **Actual vs Predicted SOC at -10°C**:
+
+![SOC Predictions at -10°C](results/soc_predictions_image_-10degree.png)
+
+
 #### Fluctuations in Predictions at -10°C:
 - **Zoomed-In View**: The following plot shows some fluctuations in SOC predictions when zooming in on the discharge region at -10°C:
   
