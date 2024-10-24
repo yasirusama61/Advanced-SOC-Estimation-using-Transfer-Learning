@@ -232,6 +232,29 @@ The model's performance at **0°C** shows very strong predictive power, with an 
   - **Regularization**: Increasing the regularization strength in the Dense layers might prevent overfitting to short-term variations in the data.
   - **Ensemble Methods**: Another approach could involve using ensemble models to average predictions and reduce noise.
 
+#### Predictions at 25°C
+- **Mean Absolute Error (MAE)**: 0.0204  
+- **Mean Squared Error (MSE)**: 0.0006394  
+- **R-squared (R²)**: 0.9924  
+
+### Insights from the Predictions at 25°C
+
+- The model performed reasonably well at **25°C**, achieving a **Mean Absolute Error** of 2.04% and an **R-squared** value of **0.9924**.
+  
+- **Prediction Fluctuations**: The **Prediction Error Plot** at 25°C shows that while the model performs well in general, some fluctuations exist during SOC estimation, especially during certain charge and discharge cycles.
+
+#### Prediction Error Plot at 25°C
+
+Below is the prediction error plot for the 25°C test:
+
+ ![Prediction Error Plot at 25°C](results/prediction_error_plot_25degC_image.png)
+
+### SOC Predictions at 25°C
+
+Below is the plot showing the **Actual vs Predicted SOC at 25°C**:
+
+ ![Actual vs Predicted SOC at 25°C](results/actual_vs_predicted_25degC_image.png)
+ 
 ### Comparative Analysis: Sequence Length 10 vs 100
 
 - **Fluctuations in Predictions**:  
@@ -251,7 +274,7 @@ The model's performance at **0°C** shows very strong predictive power, with an 
 
 - **Model Stability**:  
   - The longer sequence length of 100 allowed the model to capture more temporal dependencies, leading to fewer oscillations in the predicted SOC values, especially in regions where the SOC remains stable (such as during long charging cycles).
-  
+
 ### Transfer Learning Results
 
 Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. The transfer learning approach is expected to improve the model's adaptability across different battery chemistries or operating conditions.
