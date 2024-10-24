@@ -253,8 +253,8 @@ Below is the prediction error plot for the 25°C test:
 
 Below is the plot showing the **Actual vs Predicted SOC at 25°C**:
 
- ![Actual vs Predicted SOC at 25°C](results/actual_vs_predicted_25degC_image.png)
- 
+ ![Actual vs Predicted SOC at 25°C](results/soc_predictions_image_25degree.png)
+
 ### Comparative Analysis: Sequence Length 10 vs 100
 
 - **Fluctuations in Predictions**:  
