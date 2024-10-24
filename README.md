@@ -199,6 +199,20 @@ The following plot compares the **Actual vs Predicted SOC Values**:
 
 This plot shows that the LSTM model's predictions closely match the actual SOC values, with fewer fluctuations and smoother predictions during the charge and discharge cycles.
 
+### Comparative Analysis: Sequence Length 10 vs 100
+
+- **Fluctuations in Predictions**:  
+  - With a sequence length of 10, the SOC predictions exhibited more fluctuations, as seen in the plot below:
+  
+    ![Prediction with Sequence Length 10](results/soc_predictions_image_10.png)
+  
+  - After increasing the sequence length to 100, the fluctuations were significantly reduced, resulting in smoother predictions and more stable performance during both charge and discharge cycles:
+
+    ![Prediction with Sequence Length 100](results/soc_predictions_image.png)
+
+- **Model Stability**:  
+  - The longer sequence length of 100 allowed the model to capture more temporal dependencies, leading to fewer oscillations in the predicted SOC values, especially in regions where the SOC remains stable (such as during long charging cycles).
+
 ### Transfer Learning Results
 
 Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. The transfer learning approach is expected to improve the model's adaptability across different battery chemistries or operating conditions.
