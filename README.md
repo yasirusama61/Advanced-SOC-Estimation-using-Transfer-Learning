@@ -90,9 +90,9 @@ The project is built using Python, and the following dependencies are required:
 2. Install the required dependencies:
   `pip install -r requirements.txt`
 3. Set up your environment (optional, using virtualenv):
-  `python -m venv venv`
-  `source venv/bin/activate ` # Linux/Mac
-  `venv\Scripts\activate`  # Windows
+  - `python -m venv venv`
+  - `source venv/bin/activate ` # Linux/Mac
+  - `venv\Scripts\activate`  # Windows
 4. Usage:
    ### Training the LSTM Model
     To train the LSTM model on battery data:
@@ -265,8 +265,6 @@ Below is the plot showing the **Actual vs Predicted SOC at 25°C**:
   - After increasing the sequence length to 100, the fluctuations were significantly reduced, resulting in smoother predictions and more stable performance during both charge and discharge cycles:
 
     ![Prediction with Sequence Length 100](results/soc_predictions_image.png)
-
-    ### Comparative Analysis: Sequence Length 10 vs 100
 
 - **Fluctuations in Predictions**:  
   - With a sequence length of 10, the SOC predictions exhibited more fluctuations, especially in the lower temperatures like 0°C.
