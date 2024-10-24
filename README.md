@@ -98,18 +98,18 @@ The project is built using Python, and the following dependencies are required:
    venv\Scripts\activate  # Windows
 
 4. Usage:
-   ### Training the LSTM Model
-    To train the LSTM model on battery data:
+   - Training the LSTM Model
+     To train the LSTM model on battery data:
     - Prepare your dataset and ensure it has the required columns (Voltage, Current, Temperature, SOC).
     - Run the training script:
     ```bash
     python train_lstm.py --data <data/> --epochs 50
   
 ### Transfer Learning
-    To apply transfer learning, you can fine-tune the pre-trained LSTM model on a new dataset:
-    - Load the pre-trained model.
-    - Fine-tune the model:
-    ```bash
+To apply transfer learning, you can fine-tune the pre-trained LSTM model on a new dataset:
+- Load the pre-trained model.
+- Fine-tune the model:
+   ```bash
     python transfer_learning.py --pretrained_model <models/lstm_model.h5> --data <path/dataset>
 
 ### Model Architecture
