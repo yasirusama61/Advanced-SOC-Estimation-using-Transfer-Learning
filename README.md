@@ -218,11 +218,13 @@ The model's performance at **0°C** shows very strong predictive power, with an 
 - **Mean Squared Error (MSE)**: 0.0003229  
 - **R-squared (R²)**: 0.9947
 
-### Insights from the Predictions at 0°C and -10°C
+### Insights from the Predictions at 0°C, -10°C, 10°C, and 25°C
 
 - **Performance at 0°C**: The model performed well under the challenging condition of 0°C, with a **Mean Absolute Error** of 1.42%. This demonstrates the model's robustness under low-temperature conditions, which are typically more volatile for batteries.
-  
-- **Performance at -10°C**: The model performed similarly at **-10°C**, with a **Mean Absolute Error** of 1.27% and an **R-squared score** of 0.9947. However, upon zooming into the predictions, some fluctuations can still be observed during the discharge cycles.
+
+- **Performance at 25°C**: The model achieved a **Mean Absolute Error** of 2.04% at 25°C, with an **R-squared score** of 0.9924%. These results indicate that the model handles normal operating temperatures effectively, though some minor deviations were observed.
+
+- **Performance at +10°C**: The model was tested on **+10°C** data, yielding a **Mean Absolute Error** of 2.24% and an **R-squared score** of 0.9891%. While the model captures the general trend well, the higher error rate suggests that predictions could still benefit from further tuning, particularly in the discharge phases where deviations are more prominent.
 
 #### SOC Predictions at -10°C:
 Below is the full plot showing the **Actual vs Predicted SOC at -10°C**:
@@ -238,6 +240,13 @@ Below is the full plot showing the **Actual vs Predicted SOC at -10°C**:
   ![Zoomed In Plot at -10°C](results/zoomed_plot_-10degC_image.png)
   
   The zoomed-in plot highlights the significant fluctuations observed during the discharge cycle. These fluctuations suggest that the model may be overreacting to small variations in input signals, particularly under harsh conditions like **-10°C**.
+
+#### Full SOC Predictions at +10°C:
+Below is the full plot showing the **Actual vs Predicted SOC at +10°C**:
+
+![SOC Predictions at +10°C](results/soc_predictions_image_+10degree.png)
+
+This plot shows the overall performance of the model at **+10°C**. The model generally performs well, though some deviations and fluctuations are visible during the discharge cycle.
 
 #### Comparative Performance and Analysis:
 
