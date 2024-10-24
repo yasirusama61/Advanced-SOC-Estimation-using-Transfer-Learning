@@ -90,11 +90,13 @@ The project is built using Python, and the following dependencies are required:
 2. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
-   
+
 3. Set up your environment (optional, using virtualenv):
-  - `python -m venv venv`
-  - `source venv/bin/activate ` # Linux/Mac
-  - `venv\Scripts\activate`  # Windows
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Linux/Mac
+   venv\Scripts\activate  # Windows
+
 4. Usage:
    ### Training the LSTM Model
     To train the LSTM model on battery data:
