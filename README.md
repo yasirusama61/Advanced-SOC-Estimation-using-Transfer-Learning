@@ -191,13 +191,21 @@ Below is the plot showing the **Training and Validation Loss over Epochs**:
 
 This plot demonstrates that both training and validation loss decreased significantly in the early epochs and leveled off as training progressed, indicating stable model convergence.
 
-### SOC Predictions
+### Insights from the Predictions at 0°C
 
-The following plot compares the **Actual vs Predicted SOC Values**:
+The following plot compares the **Actual vs Predicted SOC Values at 0 Degree Temperature**:
 
-![Actual vs Predicted SOC](results/soc_predictions_image.png)
+![Actual vs Predicted SOC](results/soc_predictions_image_0degree.png)
 
-This plot shows that the LSTM model's predictions closely match the actual SOC values, with fewer fluctuations and smoother predictions during the charge and discharge cycles.
+### Insights from the Predictions at 0°C
+
+The model's performance at **0°C** shows very strong predictive power, with an **R-squared score of 0.9957** after increasing the sequence length. This indicates that over 99% of the variance in the actual SOC values is captured by the model.
+
+- **Fluctuations**: When using a sequence length of 10, the predictions exhibited some fluctuations, especially in the discharge regions. After increasing the sequence length to 100, these fluctuations were significantly reduced, resulting in much smoother predictions.
+  
+- **Temperature Impact**: At **0°C**, battery behavior can be more volatile due to reduced efficiency and increased internal resistance. The model's ability to handle this challenging condition, especially after the adjustment in sequence length, demonstrates its robustness.
+
+- **Prediction Accuracy**: The **Mean Absolute Error (MAE)** of 0.0142 suggests that, on average, the model’s SOC predictions differ from the actual values by just **1.42%**, which is quite small, especially given the difficult conditions at lower temperatures.
 
 ### Comparative Analysis: Sequence Length 10 vs 100
 
