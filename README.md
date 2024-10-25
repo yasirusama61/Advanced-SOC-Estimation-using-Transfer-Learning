@@ -362,7 +362,7 @@ The LSTM model significantly outperforms the original FNN model, particularly in
 
 This demonstrates that the LSTM model is more suited for SOC estimation, providing better accuracy and stability across different temperature conditions than the FNN model used by the original authors.
 
-#### Two comparative plots:
+#### Comparison of SOC Prediction Using FNN vs LSTM Models Across Different Temperature Profiles:
 ![Predicted vs target SOC for different ambient temperatures](results/original_plot.png)
 
 *Cited from author's original results shown above.*
