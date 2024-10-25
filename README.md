@@ -344,6 +344,25 @@ Below is the plot showing the **Actual vs Predicted SOC at 25°C**:
 #### Final Conclusion:
 The LSTM model provides promising results, especially at **25°C** and **0°C**, where it demonstrates strong predictive power. However, it struggles more at extreme low temperatures, particularly during the discharge phases at **-10°C**. With additional feature engineering, such as incorporating temperature as a model input and applying advanced regularization techniques, there is significant potential to further improve the model’s robustness, particularly under challenging conditions like low temperatures.
 
+### Comparison of LSTM Results vs Author's Original FNN Results
+
+#### Original Author's Results:
+- The SOC predictions from the original FNN model generally follow the trend but show noticeable deviations, particularly at lower temperatures (e.g., -10°C and 0°C).
+- Predicted SOC values tend to lag behind the target SOC values, especially during discharge cycles.
+- At lower temperatures, there is a more significant deviation between the predicted and actual values, likely due to the limitations of the FNN model in capturing sequential dependencies in time-series data.
+
+#### Our LSTM Model Results:
+- The LSTM model captures the dynamic changes more effectively, especially during transitions between charging and discharging phases.
+- The predictions closely follow the target SOC values, particularly under varying temperature conditions.
+- While there are still some deviations at extreme temperatures, the sequential nature of the LSTM model allows it to learn temporal dependencies more effectively than the FNN model.
+
+#### Conclusion:
+The LSTM model outperforms the original FNN model in accuracy, particularly during dynamic SOC changes and under varying temperatures. LSTM's ability to capture time dependencies significantly improves performance, especially where the FNN struggled with sharp transitions and low temperatures.
+
+#### Original Data author's results:
+![Predicted vs target SOC for different ambient temperatures](results/original_plot.png)
+
+*Cited from author's original results shown above.*
 
 ### Transfer Learning Results
 
