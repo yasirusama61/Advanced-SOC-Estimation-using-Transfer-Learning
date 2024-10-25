@@ -346,23 +346,28 @@ The LSTM model provides promising results, especially at **25°C** and **0°C**,
 
 ### Comparison of LSTM Results vs Author's Original FNN Results
 
-#### Original Author's Results:
-- The SOC predictions from the original FNN model generally follow the trend but show noticeable deviations, particularly at lower temperatures (e.g., -10°C and 0°C).
-- Predicted SOC values tend to lag behind the target SOC values, especially during discharge cycles.
-- At lower temperatures, there is a more significant deviation between the predicted and actual values, likely due to the limitations of the FNN model in capturing sequential dependencies in time-series data.
+### Author's FNN Results:
+- **Prediction Lag**: In the original results, the FNN model shows a significant lag in SOC predictions, particularly during discharge cycles. This lag becomes more pronounced at lower temperatures (-10°C and 0°C).
+- **Accuracy at Lower Temperatures**: The FNN struggles more at lower temperatures, with deviations becoming larger, especially at -10°C, where the predicted SOC does not follow the target SOC well.
+- **Sharp Transitions**: The FNN model has difficulty capturing sharp transitions during the charge and discharge phases, which leads to larger errors during these transitions.
 
-#### Our LSTM Model Results:
-- The LSTM model captures the dynamic changes more effectively, especially during transitions between charging and discharging phases.
-- The predictions closely follow the target SOC values, particularly under varying temperature conditions.
-- While there are still some deviations at extreme temperatures, the sequential nature of the LSTM model allows it to learn temporal dependencies more effectively than the FNN model.
+### LSTM Model Results:
+- **Better Temporal Capture**: The LSTM model shows much closer tracking of SOC values, especially during transitions between charging and discharging cycles. The LSTM architecture effectively captures the temporal dependencies in the data.
+- **Improved Performance Across Temperatures**: The LSTM model maintains better accuracy across all temperature conditions. The prediction lines in the plots follow the actual SOC much more closely, even at extreme temperatures (-10°C and 25°C), which were challenging for the FNN model.
+- **Smoother Predictions**: The LSTM model handles transitions more smoothly, especially during sharp changes, resulting in more accurate predictions, particularly during the dynamic SOC phases at varying temperatures.
+- **Smaller Deviations at Low Temperatures**: While some deviations still exist, particularly at -10°C, the overall error is smaller than that of the FNN model. This indicates the LSTM’s robustness to temperature fluctuations and the inherent ability to model sequential relationships in the data.
 
-#### Conclusion:
-The LSTM model outperforms the original FNN model in accuracy, particularly during dynamic SOC changes and under varying temperatures. LSTM's ability to capture time dependencies significantly improves performance, especially where the FNN struggled with sharp transitions and low temperatures.
+### Conclusion:
+The LSTM model significantly outperforms the original FNN model, particularly in areas where the FNN struggled. The LSTM model’s ability to capture time dependencies results in more accurate SOC predictions, especially during sharp transitions and across various temperature profiles. These improvements can be seen clearly in the aligned plot, where the predicted SOC closely follows the actual SOC with fewer deviations.
 
-#### Original Data author's results:
+This demonstrates that the LSTM model is more suited for SOC estimation, providing better accuracy and stability across different temperature conditions than the FNN model used by the original authors.
+
+#### Two comparative plots:
 ![Predicted vs target SOC for different ambient temperatures](results/original_plot.png)
 
 *Cited from author's original results shown above.*
+
+![Aligned Plot of SOC Predictions](results/aligned_plot.png)
 
 ### Transfer Learning Results
 
