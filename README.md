@@ -371,6 +371,24 @@ This demonstrates that the LSTM model is more suited for SOC estimation, providi
 
 ### Transfer Learning Results
 
+### Transfer Learning Data
+
+For the transfer learning phase, we utilized simulated data from a **different battery chemistry** to evaluate the adaptability of our SOC prediction model. The original dataset used for this project came from the **LG 18650HG2** Li-ion battery, contributed by Philip Kollmeyer, Carlos Vidal, Mina Naguib, and Michael Skells, and published on March 6, 2020 (DOI: 10.17632/cp3473x7xv.3). This 18650-type battery cell is widely known for its stable performance and reliability, making it popular in electric vehicles and power tools.
+
+In contrast, the transfer learning data was simulated using the **LG M50LT** cell chemistry. The LG M50LT battery cell is an **21700-type Li-ion cell**, which has different electrochemical characteristics compared to the 18650 cell. This cell type is optimized for energy density, making it suitable for applications requiring longer runtime, such as high-energy-density applications in electric vehicles. The LG M50LT offers higher capacity and operates with different charge/discharge dynamics, which can pose unique challenges for SOC estimation models trained on other battery chemistries.
+
+#### Experiment Configuration
+
+To generate the new data, we used the **Doyle-Fuller-Newman (DFN) model** in PyBAMM and ran a simulation under controlled conditions for **10 cycles**, as follows:
+
+1. **Discharge** at 0.4C until the cell voltage reaches 2.5 V
+2. **Rest** period for 10 minutes
+3. **Charge** at 0.5C until reaching 4.2 V
+4. **Hold** at 4.2 V until the current drops to 50 mA
+5. **Rest** for an additional 10 minutes after charging
+
+This experimental setup was chosen to simulate realistic operating conditions for SOC estimation. By combining discharge, rest, charge, and hold phases, this configuration provides a comprehensive dataset that captures a range of SOC dynamics. The data simulated from the LG M50LT cell allows us to validate the robustness of our SOC prediction model in adapting to a different cell chemistry and performance characteristics through transfer learning.
+
 Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. This approach aims to enhance the model's adaptability across various battery chemistries and operating conditions.
 #### Model Architecture
 
