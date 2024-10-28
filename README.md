@@ -433,8 +433,12 @@ The loss curve for the transfer learning process shows both the training and val
 
 This curve confirms the effectiveness of the transfer learning process, where the model adapts smoothly to new data with minimal overfitting. The achieved low final validation loss validates the improved predictive performance observed in the evaluation metrics.
 
-
 We initially experimented with a specific set of features, namely **Voltage [V]**, **Current [A]**, **Cell Temperature [C]**, **Avg_voltage**, and **Avg_current**. However, the model's performance on the new dataset was suboptimal with only these five features, showing limited improvement during transfer learning. 
+
+- **Mean Absolute Error (MAE):** 0.2305
+- **R-squared (R²):** 0.2605
+
+These initial results showed limitations in the model's ability to accurately capture the SOC dynamics in the new dataset. To address this, we incorporated additional features, specifically:
 
 To address this, we incorporated additional domain-specific features that significantly enhanced model accuracy:
 
