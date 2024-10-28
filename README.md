@@ -389,7 +389,20 @@ To generate the new data, we used the **Doyle-Fuller-Newman (DFN) model** in PyB
 
 This experimental setup was chosen to simulate realistic operating conditions for SOC estimation. By combining discharge, rest, charge, and hold phases, this configuration provides a comprehensive dataset that captures a range of SOC dynamics. The data simulated from the LG M50LT cell allows us to validate the robustness of our SOC prediction model in adapting to a different cell chemistry and performance characteristics through transfer learning.
 
+### Transfer Learning Data Split and Normalization
+
+For the transfer learning phase, we used a **time-based split** to maintain the sequence integrity in this time-series dataset. The data was divided as follows:
+
+- **Training set**: 70% of the data, used to fine-tune the pre-trained LSTM model
+- **Validation set**: 15% of the data, for monitoring validation loss during training
+- **Test set**: 15% of the data, for evaluating the model’s final performance
+
+Each segment was normalized separately, with the training set used to fit the scalers. This approach ensures that scaling factors are only based on the training data, preserving the validation and test data integrity and preventing data leakage.
+
+This time-based approach supports our goal of transfer learning by allowing the model to adapt to the different characteristics of the LG M50LT battery dataset while preserving sequential dependencies.
+
 Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. This approach aims to enhance the model's adaptability across various battery chemistries and operating conditions.
+
 #### Model Architecture
 
 The transfer learning model builds upon a pre-trained LSTM network, with modifications made to adapt it to the new dataset:
