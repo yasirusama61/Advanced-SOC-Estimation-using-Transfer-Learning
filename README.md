@@ -450,8 +450,18 @@ After adding these engineered features, the model's performance improved substan
 
 - **Mean Absolute Error (MAE)**: 0.0117
 - **R-squared (R²)**: 0.9974
+- **Root Mean Squared Error (RMSE)**: 0.0165 (1.65%)
 
 These results show a marked improvement compared to the initial attempt with only the five core features. The additional features allowed the LSTM model to capture more nuanced relationships within the battery data, particularly during dynamic changes in SOC. 
+
+**Significance of RMSE in SOC Prediction**:
+The **Root Mean Squared Error (RMSE)** is particularly significant for SOC prediction because it measures the model’s accuracy in a way that penalizes larger errors more heavily. RMSE provides insights into the average deviation between predicted and actual SOC values, helping identify models that perform reliably with fewer substantial errors. Since RMSE is in the same unit as SOC, it offers an intuitive measure of accuracy, making it easier to assess how close the predictions are to real values. Lower RMSE directly translates to more accurate SOC readings, which is critical for effective battery management, safety, and efficiency.
+
+An RMSE of 0.0165 (or 1.65% in percentage terms if we consider the target SOC range from 0 to 1) indicates that, on average, the model's predictions differ from the actual SOC values by about 1.65%. This low RMSE suggests that the model is highly accurate in predicting SOC after fine-tuning with additional features, making it suitable for applications that require precise SOC estimation, such as battery management systems.
+
+Low RMSE values are desirable because they indicate less variance between predicted and actual values, reflecting the model’s reliability and robustness across different battery conditions.
+
+This improved performance suggests that the additional engineered features enabled the model to better adapt to variations in SOC, resulting in a robust and reliable prediction model suitable for cross-battery scenarios.
 
 
 #### Prediction Plot for Transfer Learning
