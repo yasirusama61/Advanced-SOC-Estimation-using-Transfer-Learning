@@ -372,12 +372,20 @@ This demonstrates that the LSTM model is more suited for SOC estimation, providi
 ### Transfer Learning Results
 
 Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. This approach aims to enhance the model's adaptability across various battery chemistries and operating conditions.
+We initially experimented with a specific set of features, namely **Voltage [V]**, **Current [A]**, **Cell Temperature [C]**, **Avg_voltage**, and **Avg_current**. However, the model's performance on the new dataset was suboptimal with only these five features, showing limited improvement during transfer learning. 
 
-#### Final Metrics
-- **Mean Absolute Error (MAE)**: 0.0117  
-- **R-squared (R²)**: 0.9974  
+To address this, we incorporated additional domain-specific features that significantly enhanced model accuracy:
 
-These results demonstrate a substantial improvement, with the transfer learning model achieving high accuracy in predicting the SOC under new conditions. This indicates that the LSTM model, when fine-tuned, can generalize well to different datasets with similar or even improved performance compared to the initial training.
+- **Voltage_Current_Interaction**: Captures the interaction between voltage and current, which is especially useful for understanding SOC in complex battery cycles.
+- **Temp_Current_Interaction**: Captures the relationship between temperature and current, a critical factor in predicting SOC under varying thermal and load conditions.
+- **Temp_Rolling_Avg**: A rolling average of temperature, which helps smooth out sudden temperature fluctuations and allows the model to understand temperature trends over time.
+
+After adding these engineered features, the model's performance improved substantially. Here are the updated results after fine-tuning with transfer learning:
+
+- **Mean Absolute Error (MAE)**: 0.0117
+- **R-squared (R²)**: 0.9974
+
+These results show a marked improvement compared to the initial attempt with only the five core features. The additional features allowed the LSTM model to capture more nuanced relationships within the battery data, particularly during dynamic changes in SOC. 
 
 #### Model Loss Curve for Transfer Learning
 The training and validation loss curves over epochs during the transfer learning phase are shown below. The curve indicates how well the model was able to minimize error as it adapted to the new data.
