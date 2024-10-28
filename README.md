@@ -372,6 +372,55 @@ This demonstrates that the LSTM model is more suited for SOC estimation, providi
 ### Transfer Learning Results
 
 Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. This approach aims to enhance the model's adaptability across various battery chemistries and operating conditions.
+#### Model Architecture
+
+The transfer learning model builds upon a pre-trained LSTM network, with modifications made to adapt it to the new dataset:
+
+- **Pre-trained Layers**: The first layers of the pre-trained LSTM model were frozen to retain the learned representations from the original training dataset. Specifically, all layers except the last three were frozen to balance between retaining learned features and adapting to new data.
+- **Custom Transfer Layers**:
+  - **LSTM Layer**: A new LSTM layer with 30 units, which processes the sequential data over the specified `sequence_length`.
+  - **Dense Layer**: A Dense layer with 32 units and ReLU activation to further capture non-linear relationships in the data.
+  - **Dropout Layer**: A Dropout layer with a rate of 0.3 to prevent overfitting by randomly deactivating neurons during training.
+  - **Output Layer**: A Dense output layer with a single unit and sigmoid activation, as the task is a regression to estimate SOC within a normalized range.
+
+  ```python
+    # Model architecture for transfer learning
+    transfer_model = Sequential([
+        LSTM(30, input_shape=(sequence_length, num_features)),
+        Dense(32, activation="relu"),
+        Dropout(0.3),
+        Dense(1, activation="sigmoid")
+    ])
+
+### Training and Fine-tuning
+The model was compiled with the Mean Squared Error (MSE) loss function, optimized using Adam with a low learning rate of 0.000005 to ensure gradual fine-tuning:
+
+  ```python
+     optimizer = Adam(learning_rate=0.000005)
+     transfer_model.compile(optimizer=optimizer, loss="mse", metrics=["mse"])
+  ```
+### Training Configuration
+
+- **Epochs**: The model was initially set to train for 100 epochs. However, the early stopping callback halted training at 59 epochs as the validation loss showed no further improvement.
+
+- **Batch Size**: 128
+
+- **Validation Split**: Validation data was used to monitor the model’s performance during training.
+
+#### Callbacks
+
+- **EarlyStopping**: Monitored `val_loss` with patience set to 3 epochs to prevent overfitting.
+- **ReduceLROnPlateau**: Reduced learning rate by a factor of 0.5 if `val_loss` did not improve for 2 consecutive epochs, with a minimum learning rate of 1e-6.
+
+### Training Loss and Validation Loss
+
+The model achieved a minimum training loss of 0.0013 and a validation loss of 0.000273 after 59 epochs.
+
+#### Model Loss Curve for Transfer Learning
+The training and validation loss curves over epochs during the transfer learning phase are shown below. The curve indicates how well the model was able to minimize error as it adapted to the new data.
+
+![Transfer Learning Loss Curve](results/loss_curve_image_transfer_learning.png)
+
 We initially experimented with a specific set of features, namely **Voltage [V]**, **Current [A]**, **Cell Temperature [C]**, **Avg_voltage**, and **Avg_current**. However, the model's performance on the new dataset was suboptimal with only these five features, showing limited improvement during transfer learning. 
 
 To address this, we incorporated additional domain-specific features that significantly enhanced model accuracy:
@@ -387,10 +436,6 @@ After adding these engineered features, the model's performance improved substan
 
 These results show a marked improvement compared to the initial attempt with only the five core features. The additional features allowed the LSTM model to capture more nuanced relationships within the battery data, particularly during dynamic changes in SOC. 
 
-#### Model Loss Curve for Transfer Learning
-The training and validation loss curves over epochs during the transfer learning phase are shown below. The curve indicates how well the model was able to minimize error as it adapted to the new data.
-
-![Transfer Learning Loss Curve](results/loss_curve_image_transfer_learning.png)
 
 #### Prediction Plot for Transfer Learning
 The plot below shows the model's predicted SOC values versus the actual SOC values over a range of samples at various temperature conditions. The close alignment between the predicted and actual values highlights the effectiveness of the transfer learning approach.
