@@ -421,6 +421,19 @@ The training and validation loss curves over epochs during the transfer learning
 
 ![Transfer Learning Loss Curve](results/loss_curve_image_transfer_learning.png)
 
+### Transfer Learning Loss Curve Analysis
+
+The loss curve for the transfer learning process shows both the training and validation loss decreasing steadily across epochs:
+
+- **Initial Rapid Drop**: In the early epochs, both training and validation loss decrease sharply. This suggests that the model quickly learned useful features from the new dataset and adjusted well to the new battery chemistry and operating conditions.
+
+- **Stabilization Phase**: Around epoch 20, the losses start to stabilize. This indicates that the model has effectively captured the significant patterns in the data, reaching a point where further training provides diminishing returns.
+
+- **Convergence**: The training and validation loss curves converge after epoch 30, suggesting that the model is generalizing well without overfitting. Both losses maintain low values as training progresses, and the early stopping mechanism halts training at epoch 59.
+
+This curve confirms the effectiveness of the transfer learning process, where the model adapts smoothly to new data with minimal overfitting. The achieved low final validation loss validates the improved predictive performance observed in the evaluation metrics.
+
+
 We initially experimented with a specific set of features, namely **Voltage [V]**, **Current [A]**, **Cell Temperature [C]**, **Avg_voltage**, and **Avg_current**. However, the model's performance on the new dataset was suboptimal with only these five features, showing limited improvement during transfer learning. 
 
 To address this, we incorporated additional domain-specific features that significantly enhanced model accuracy:
