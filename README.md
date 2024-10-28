@@ -508,6 +508,24 @@ The plot below shows the model's predicted SOC values versus the actual SOC valu
 
 This level of accuracy, especially around challenging transition points, highlights the effectiveness of transfer learning. The model’s ability to capture SOC dynamics in both steady and rapidly changing phases makes it a valuable tool for applications requiring precise SOC estimations under varying conditions.
 
+## 1. Comparison of Metrics Before and After Transfer Learning
+
+| Metric                     | 0°C Before Transfer | -10°C Before Transfer | 10°C Before Transfer | 25°C Before Transfer | After Transfer Learning (25°C) |
+|----------------------------|---------------------|------------------------|----------------------|----------------------|---------------------------------|
+| **Mean Absolute Error (MAE)** | 0.0142              | 0.0157                 | 0.0224               | 0.0204               | 0.0117                          |
+| **Mean Squared Error (MSE)**  | 0.000315            | 0.000405               | 0.0003229            | 0.0006394            | 0.000273                        |
+| **Root Mean Squared Error (RMSE)** | 0.0178         | 0.0201                 | 0.0180               | 0.0253               | 0.0165                          |
+| **R-squared (R²)**         | 0.9932              | 0.9910                 | 0.9891               | 0.9924               | 0.9974                          |
+
+## 2. Percentage Improvement with Transfer Learning
+
+- **MAE Reduction**: From 0.0204 (before) to 0.0117 (after) → **42.6% decrease**
+- **MSE Reduction**: From 0.0006394 (before) to 0.000273 (after) → **57.3% decrease**
+- **R² Increase**: From 0.9924 to 0.9974 → **0.5% improvement**
+
+These results highlight the significant enhancement in model performance after applying transfer learning, particularly in handling stable 25°C conditions, which is crucial for high-precision applications in battery management systems.
+
+
 ## Contributing
 
 Contributions to this project are welcome. If you'd like to contribute, please open an issue or submit a pull request.
