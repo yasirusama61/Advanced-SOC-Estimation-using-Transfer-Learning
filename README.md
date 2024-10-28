@@ -371,14 +371,31 @@ This demonstrates that the LSTM model is more suited for SOC estimation, providi
 
 ### Transfer Learning Results
 
-Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. The transfer learning approach is expected to improve the model's adaptability across different battery chemistries or operating conditions.
+Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. This approach aims to enhance the model's adaptability across various battery chemistries and operating conditions.
 
-The results after applying transfer learning will be updated soon.
+#### Final Metrics
+- **Mean Absolute Error (MAE)**: 0.0117  
+- **R-squared (R²)**: 0.9974  
 
-- **Mean Absolute Error (MAE)**: *To be added*  
-- **R-squared (R²)**: *To be added*  
+These results demonstrate a substantial improvement, with the transfer learning model achieving high accuracy in predicting the SOC under new conditions. This indicates that the LSTM model, when fine-tuned, can generalize well to different datasets with similar or even improved performance compared to the initial training.
 
-We expect the transfer learning model to perform well, possibly with similar or improved metrics compared to the initial training, depending on the new dataset's complexity and similarity to the original data.
+#### Model Loss Curve for Transfer Learning
+The training and validation loss curves over epochs during the transfer learning phase are shown below. The curve indicates how well the model was able to minimize error as it adapted to the new data.
+
+![Transfer Learning Loss Curve](results/loss_curve_image_transfer_learning.png)
+
+#### Prediction Plot for Transfer Learning
+The plot below shows the model's predicted SOC values versus the actual SOC values over a range of samples at various temperature conditions. The close alignment between the predicted and actual values highlights the effectiveness of the transfer learning approach.
+
+![Actual vs Predicted SOC for Transfer Learning](results/soc_predictions_transfer_learning.png)
+
+##### Key Observations:
+- **High Alignment**: The predicted SOC values closely follow the actual SOC values throughout the charge and discharge cycles, showing only minimal deviations. This indicates that the model has effectively captured the complex relationships between features and SOC.
+- **Charge and Discharge Cycles**: During both the charge and discharge phases, the predicted values align well with the actual values, especially in the more linear regions. This suggests that the model is well-suited for following the gradual changes in SOC typical of these cycles.
+- **Transition Points**: At points of rapid SOC change, such as near the end of charge and discharge, slight deviations are noticeable between the predicted and actual SOC values. These deviations are expected in battery data, especially in highly dynamic regions where changes are more abrupt.
+- **Overall Stability**: The plot shows a high degree of stability, with minimal oscillations or noise in the predicted values. This reflects the robustness of the transfer learning approach, where the model has effectively generalized from the pre-trained data to the new dataset.
+
+This level of accuracy, especially around challenging transition points, highlights the effectiveness of transfer learning. The model’s ability to capture SOC dynamics in both steady and rapidly changing phases makes it a valuable tool for applications requiring precise SOC estimations under varying conditions.
 
 ## Contributing
 
