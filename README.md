@@ -1,10 +1,12 @@
 # Advanced SOC Estimation using Transfer Learning
 
-This repository contains the project for **State of Charge (SOC) Estimation** using **Transfer Learning** techniques applied to lithium-ion battery data. The project leverages **LSTM (Long Short-Term Memory)** models to predict SOC, and aims to improve performance using transfer learning across different battery chemistries and operating conditions.
+This repository provides an advanced approach to **State of Charge (SOC) Estimation** in lithium-ion batteries, employing **Transfer Learning** to adapt a pre-trained model to new battery datasets with different chemistries and operating conditions. The project uses a **Long Short-Term Memory (LSTM)** model to accurately predict SOC by capturing the sequential dependencies in battery data, a notable improvement over the Feedforward Neural Network (FNN) model used in the original data.
 
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Data Description](#data-description)
+- [Feature Engineering and Data Preparation](#feature-engineering-and-data-preparation)
+- [Transfer Learning Methodology](#transfer-learning-methodology)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -15,14 +17,15 @@ This repository contains the project for **State of Charge (SOC) Estimation** us
 
 ## Project Overview
 
-The goal of this project is to estimate the State of Charge (SOC) of lithium-ion batteries using advanced machine learning techniques, with a focus on Transfer Learning. While the original data authors employed a Feedforward Neural Network (FNN) model, this project explores the use of a Long Short-Term Memory (LSTM) model for SOC prediction, which has demonstrated improved performance by capturing the sequential dependencies in the battery data.
+The goal of this project is to accurately estimate the State of Charge (SOC) of lithium-ion batteries using cutting-edge machine learning techniques, with a focus on **Transfer Learning**. By leveraging an LSTM model, this project captures the temporal patterns in battery data, improving the model’s predictive accuracy. The project stands out by successfully transferring knowledge from one battery dataset to another, enabling the model to adapt to new battery chemistries and conditions.
 
-The project consists of the following key tasks:
+### Key Project Tasks:
+- **Comprehensive Data Preprocessing and Feature Engineering**: Detailed preprocessing includes interaction and temporal features that strengthen model adaptability across datasets.
+- **LSTM Model Training and Performance Comparison**: We train an LSTM model for SOC prediction, outperforming the original FNN model by capturing temporal relationships effectively.
+- **Application of Transfer Learning for Cross-Battery Adaptation**: The pre-trained LSTM model is fine-tuned using data from a different battery chemistry and operational conditions, specifically leveraging interaction features to enhance predictive performance.
+- **Robust Evaluation and Visualization**: Detailed analysis includes SOC prediction performance across different temperatures, validation with error metrics (MAE, RMSE, R²), and feature importance analysis.
 
-- **Data preprocessing and feature engineering** for battery datasets, including interaction features to enhance predictive accuracy.
-- **Training an LSTM model** for SOC prediction and comparing it to the original FNN approach.
-- **Applying transfer learning** for cross-battery predictions to adapt the LSTM model for different battery datasets with potentially varying chemistries, temperatures, or charge/discharge cycles.
-- **Visualization and analysis** of model performance across different temperature profiles and discharge conditions.
+This project offers insights into the adaptability of machine learning models for SOC estimation, with potential applications in battery management systems for electric vehicles, energy storage systems, and other areas where accurate SOC estimation is critical.
 
 ## Data Description
 
