@@ -437,6 +437,18 @@ For the transfer learning phase, we utilized simulated data from a **different b
 
 In contrast, the transfer learning data was simulated using the **LG M50LT** cell chemistry. The LG M50LT battery cell is an **21700-type Li-ion cell**, which has different electrochemical characteristics compared to the 18650 cell. This cell type is optimized for energy density, making it suitable for applications requiring longer runtime, such as high-energy-density applications in electric vehicles. The LG M50LT offers higher capacity and operates with different charge/discharge dynamics, which can pose unique challenges for SOC estimation models trained on other battery chemistries.
 
+### LGM50LT Cell Specifications
+
+![LGM50LT Battery Cell](results/LGM50LT_image.png)
+
+The **LGM50LT** cell data introduces new conditions, enabling the model to generalize effectively:
+- **Chemistry**: Li-ion
+- **Nominal Capacity**: 5.0 Ah
+- **Voltage**: 3.6 V
+- **Type**: 21700 cell
+
+Simulating data from a different battery helps test the model’s transfer learning capabilities by adapting to varied cell characteristics and performance.
+
 #### Experiment Configuration
 
 To generate the new data, we used the **Doyle-Fuller-Newman (DFN) model** in PyBAMM and ran a simulation under controlled conditions for **10 cycles**, as follows:
