@@ -78,6 +78,19 @@ The dataset used for this project is the **LG 18650HG2 Li-ion Battery Data** pro
 - Published: 6 March 2020.
 - DOI: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3).
 
+![Battery Specifications and Dimensions](results/image.png)
+
+### Battery Main Specifications
+
+| Specification     | Value                                              |
+|-------------------|----------------------------------------------------|
+| **Chemistry**     | Li[NiMnCo]O2 (H-NMC) / Graphite + SiO              |
+| **Nominal Voltage** | 3.6 V                                           |
+| **Charge**        | - Normal: 1.5A, 4.2V, 50mA End-Current (CC-CV)    |
+|                   | - Fast: 4A, 4.2V, 100mA End-Current (CC-CV)       |
+| **Discharge**     | 2V End Voltage, 20A MAX Continuous Current         |
+| **Nominal Capacity** | 3.0 Ah                                         |
+| **Energy Density** | 240 (Wh/Kg)                                      |
 ### Experimental Setup
 
 - A brand new **3Ah LG HG2 cell** was tested in an 8 cu.ft. thermal chamber with a **75amp, 5 volt Digatron Firing Circuits Universal Battery Tester**.
