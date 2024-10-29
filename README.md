@@ -4,6 +4,7 @@ This repository provides an advanced approach to **State of Charge (SOC) Estimat
 
 ## Table of Contents
 - [Project Overview](#project-overview)
+- [Why This Project?](#why-this-project)
 - [Key Project Tasks](#key-project-tasks)
 - [Data Description](#data-description)
   - [Experimental Setup](#experimental-setup)
@@ -50,6 +51,10 @@ The goal of this project is to accurately estimate the State of Charge (SOC) of 
 - **Robust Evaluation and Visualization**: Detailed analysis includes SOC prediction performance across different temperatures, validation with error metrics (MAE, RMSE, R²), and feature importance analysis.
 
 This project offers insights into the adaptability of machine learning models for SOC estimation, with potential applications in battery management systems for electric vehicles, energy storage systems, and other areas where accurate SOC estimation is critical.
+
+## Why This Project?
+
+Battery management is vital for safety, longevity, and performance in electric vehicles and energy storage systems. This project tackles the unique challenge of adapting SOC estimation models to different battery chemistries and temperature conditions. By leveraging transfer learning, the model adapts to new data with minimal retraining, making it suitable for a wide range of applications.
 
 ## Data Description
 
