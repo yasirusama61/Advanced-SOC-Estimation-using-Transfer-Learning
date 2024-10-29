@@ -52,6 +52,21 @@ The goal of this project is to accurately estimate the State of Charge (SOC) of 
 
 This project offers insights into the adaptability of machine learning models for SOC estimation, with potential applications in battery management systems for electric vehicles, energy storage systems, and other areas where accurate SOC estimation is critical.
 
+### Project Workflow
+
+Below is a flowchart that illustrates the key steps in the project workflow:
+
+![Project Workflow Flowchart](results/flowchart-image.png)
+
+- **Existing Dataset Collection**: Use LG 18650HG2 battery data (voltage, current, temperature, SOC)
+- **Data Preprocessing & Feature Engineering**: Normalize data, add interaction terms, and temporal features
+- **Model Training**: Train LSTM model on initial battery data
+- **Model Evaluation**: Measure MAE, MSE, and R² to assess initial performance
+- **Transfer Learning**: Fine-tune model on simulated **LGM50LT data** via PyBAMM; adapt to different chemistry
+- **Final Evaluation**: Compare pre- and post-transfer learning performance for robustness
+
+This flowchart outlines the data processing, model training, and transfer learning steps to adapt SOC estimation to diverse battery conditions.
+
 ## Why This Project?
 
 Battery management is vital for safety, longevity, and performance in electric vehicles and energy storage systems. This project tackles the unique challenge of adapting SOC estimation models to different battery chemistries and temperature conditions. By leveraging transfer learning, the model adapts to new data with minimal retraining, making it suitable for a wide range of applications.
