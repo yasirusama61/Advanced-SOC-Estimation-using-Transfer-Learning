@@ -447,7 +447,7 @@ The **LGM50LT** cell data introduces new conditions, enabling the model to gener
 - **Voltage**: 3.6 V
 - **Type**: 21700 cell
 
-Simulating data from a different battery helps test the model’s transfer learning capabilities by adapting to varied cell characteristics and performance.
+This 21700 form factor cell has a larger size compared to the 18650, providing a higher capacity and making it suitable for applications requiring extended runtime.Simulating data from a different battery helps test the model’s transfer learning capabilities by adapting to varied cell characteristics and performance.
 
 #### Experiment Configuration
 
