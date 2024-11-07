@@ -352,11 +352,9 @@ The LSTM model significantly outperforms the FNN model, particularly in capturin
 
 ![Aligned SOC Predictions](results/aligned_plot.png)
 
-# 🔄 **Transfer Learning Results**
+# 🔄 Transfer Learning Results
 
-### **Transfer Learning Data**
-
-![LGM50LT Battery Cell](results/LGM50LT_image.png)
+#### Transfer Learning Data
 
 For transfer learning, simulated data from the **LG M50LT** cell was used to assess the LSTM model's adaptability. While the original dataset came from the **LG 18650HG2** cell, the M50LT has distinct characteristics, including:
 
@@ -365,8 +363,23 @@ For transfer learning, simulated data from the **LG M50LT** cell was used to ass
 - **Voltage**: 3.6 V
 - **Cell Type**: 21700 (larger form factor than 18650)
 
-Simulating data from the M50LT cell tests the model’s adaptability to different chemistries and performance profiles, which is critical for real-world applications.
+Simulating data from the M50LT cell tests the model’s adaptability to different chemistries and performance profiles, critical for real-world applications.
 
+#### Experiment Configuration
+
+Using the **Doyle-Fuller-Newman (DFN) model** in PyBAMM, we configured the following experiment:
+
+1. **Discharge** at 0.4C to 2.5V
+2. **Rest** for 10 minutes
+3. **Charge** at 0.5C to 4.2V
+4. **Hold** at 4.2V until current drops to 50 mA
+5. **Rest** for an additional 10 minutes
+
+This setup provides comprehensive SOC dynamics, allowing the model to adapt its predictions to varied cell chemistries and operational conditions, validating the robustness of transfer learning for SOC estimation.
+
+![LG M50LT Battery Cell](results/LGM50LT_image.png)
+
+The image above displays the **LG M50LT 21700 Li-ion Battery Cell** along with its dimensions. This cell has a height of 70.15 mm and a diameter of 21.7 mm, with a steel (nickel-plated) can for durability.
 #### Experiment Configuration
 
 Using the **Doyle-Fuller-Newman (DFN) model** in PyBAMM, we configured the following experiment:
