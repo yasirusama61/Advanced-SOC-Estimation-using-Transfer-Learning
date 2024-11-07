@@ -350,9 +350,11 @@ The LSTM model significantly outperforms the FNN model, particularly in capturin
 
 ![Aligned SOC Predictions](results/aligned_plot.png)
 
-# 🔄 Transfer Learning Results
+# 🔄 **Transfer Learning Results**
 
-#### Transfer Learning Data
+### **Transfer Learning Data**
+
+![LGM50LT Battery Cell](results/LGM50LT_image.png)
 
 For transfer learning, simulated data from the **LG M50LT** cell was used to assess the LSTM model's adaptability. While the original dataset came from the **LG 18650HG2** cell, the M50LT has distinct characteristics, including:
 
@@ -361,7 +363,7 @@ For transfer learning, simulated data from the **LG M50LT** cell was used to ass
 - **Voltage**: 3.6 V
 - **Cell Type**: 21700 (larger form factor than 18650)
 
-Simulating data from the M50LT cell tests the model’s adaptability to different chemistries and performance profiles, critical for real-world applications.
+Simulating data from the M50LT cell tests the model’s adaptability to different chemistries and performance profiles, which is critical for real-world applications.
 
 #### Experiment Configuration
 
