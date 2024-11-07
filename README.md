@@ -350,7 +350,7 @@ The LSTM model significantly outperforms the FNN model, particularly in capturin
 
 ![Aligned SOC Predictions](results/aligned_plot.png)
 
-### Transfer Learning Results
+# 🔄 Transfer Learning Results
 
 #### Transfer Learning Data
 
