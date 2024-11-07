@@ -1,6 +1,16 @@
-# Advanced SOC Estimation using Transfer Learning
+# ⚡ **Advanced SOC Estimation using Transfer Learning**
 
-This repository provides an advanced approach to **State of Charge (SOC) Estimation** in lithium-ion batteries, employing **Transfer Learning** to adapt a pre-trained model to new battery datasets with different chemistries and operating conditions. The project uses a **Long Short-Term Memory (LSTM)** model to accurately predict SOC by capturing the sequential dependencies in battery data, a notable improvement over the Feedforward Neural Network (FNN) model used in the original data.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](#)
+[![Machine Learning](https://img.shields.io/badge/Machine%20Learning-LSTM%20%7C%20Transfer%20Learning-yellowgreen)](#)
+[![Battery Data](https://img.shields.io/badge/Data-LG%2018650HG2-lightblue)](#)
+[![SOC Estimation](https://img.shields.io/badge/SOC%20Estimation-Enabled-red)](#)
+
+---
+
+This repository provides an advanced approach to **State of Charge (SOC) Estimation** in lithium-ion batteries, employing **Transfer Learning** to adapt a pre-trained model to new battery datasets with different chemistries and operating conditions. The project uses a **Long Short-Term Memory (LSTM)** model to accurately predict SOC by capturing the sequential dependencies in battery data, offering a notable improvement over traditional Feedforward Neural Network (FNN) models.
+
+---
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -40,108 +50,110 @@ This repository provides an advanced approach to **State of Charge (SOC) Estimat
 - [License](#license)
 - [References](#references)
 
-## Project Overview
+## 🔍 Project Overview
 
 The goal of this project is to accurately estimate the State of Charge (SOC) of lithium-ion batteries using cutting-edge machine learning techniques, with a focus on **Transfer Learning**. By leveraging an LSTM model, this project captures the temporal patterns in battery data, improving the model’s predictive accuracy. The project stands out by successfully transferring knowledge from one battery dataset to another, enabling the model to adapt to new battery chemistries and conditions.
 
-### Key Project Tasks:
-- **Comprehensive Data Preprocessing and Feature Engineering**: Detailed preprocessing includes interaction and temporal features that strengthen model adaptability across datasets.
-- **LSTM Model Training and Performance Comparison**: We train an LSTM model for SOC prediction, outperforming the original FNN model by capturing temporal relationships effectively.
-- **Application of Transfer Learning for Cross-Battery Adaptation**: The pre-trained LSTM model is fine-tuned using data from a different battery chemistry and operational conditions, specifically leveraging interaction features to enhance predictive performance.
-- **Robust Evaluation and Visualization**: Detailed analysis includes SOC prediction performance across different temperatures, validation with error metrics (MAE, RMSE, R²), and feature importance analysis.
+### Key Project Tasks
+- **Data Preprocessing & Feature Engineering**: Incorporates interaction and temporal features to enhance model adaptability across datasets.
+- **LSTM Model Training**: Trains an LSTM model for SOC prediction, improving accuracy by capturing sequential data patterns.
+- **Transfer Learning Application**: Fine-tunes the pre-trained LSTM model with data from different battery chemistries and conditions.
+- **Comprehensive Evaluation**: Includes SOC prediction performance across various temperatures with detailed metrics (MAE, RMSE, R²) and feature importance analysis.
 
-This project offers insights into the adaptability of machine learning models for SOC estimation, with potential applications in battery management systems for electric vehicles, energy storage systems, and other areas where accurate SOC estimation is critical.
+This approach to SOC estimation offers significant benefits for applications in electric vehicles, energy storage systems, and other areas where accurate SOC estimation is critical.
 
-### Project Workflow
+---
 
-Below is a flowchart that illustrates the key steps in the project workflow:
+## 🔄 Project Workflow
+
+The workflow for the project is visualized below:
 
 ![Project Workflow Flowchart](results/flowchart-image.png)
 
-- **Existing Dataset Collection**: Use LG 18650HG2 battery data (voltage, current, temperature, SOC)
-- **Data Preprocessing & Feature Engineering**: Normalize data, add interaction terms, and temporal features
-- **Model Training**: Train LSTM model on initial battery data
-- **Model Evaluation**: Measure MAE, MSE, and R² to assess initial performance
-- **Transfer Learning**: Fine-tune model on simulated **LGM50LT data** via PyBAMM; adapt to different chemistry
-- **Final Evaluation**: Compare pre- and post-transfer learning performance for robustness
+1. **Data Collection**: Collect LG 18650HG2 battery data (voltage, current, temperature, SOC).
+2. **Data Preprocessing**: Normalize, add interaction terms, and create temporal features.
+3. **Model Training**: Train the LSTM model on initial battery data.
+4. **Model Evaluation**: Assess performance metrics (MAE, MSE, R²).
+5. **Transfer Learning**: Fine-tune the model using LGM50LT data from PyBAMM simulations.
+6. **Final Evaluation**: Compare pre- and post-transfer learning performance.
 
-This flowchart outlines the data processing, model training, and transfer learning steps to adapt SOC estimation to diverse battery conditions.
+---
 
-## Why This Project?
+## 📋 Why This Project?
 
-Battery management is vital for safety, longevity, and performance in electric vehicles and energy storage systems. This project tackles the unique challenge of adapting SOC estimation models to different battery chemistries and temperature conditions. By leveraging transfer learning, the model adapts to new data with minimal retraining, making it suitable for a wide range of applications.
+Battery management is essential for safety, longevity, and performance, particularly in EVs and energy storage systems. This project adapts SOC estimation models to new battery chemistries and operating conditions using transfer learning, enhancing model versatility with minimal retraining requirements.
 
-## Data Description
+---
 
-The dataset used for this project is the **LG 18650HG2 Li-ion Battery Data** provided by:
-- **Philip Kollmeyer**, **Carlos Vidal**, **Mina Naguib**, **Michael Skells**.
-- Published: 6 March 2020.
-- DOI: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3).
+## 📊 Data Description
 
-![Battery Specifications and Dimensions](results/image.png)
+The primary dataset is the **LG 18650HG2 Li-ion Battery Data** provided by Philip Kollmeyer, Carlos Vidal, Mina Naguib, and Michael Skells. 
+
+- **Source**: McMaster University, Ontario, Canada.
+- **Publication Date**: March 6, 2020.
+- **DOI**: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3).
 
 ### Battery Main Specifications
 
-| Specification     | Value                                              |
-|-------------------|----------------------------------------------------|
-| **Chemistry**     | Li[NiMnCo]O2 (H-NMC) / Graphite + SiO              |
-| **Nominal Voltage** | 3.6 V                                           |
-| **Charge**        | - Normal: 1.5A, 4.2V, 50mA End-Current (CC-CV)    |
-|                   | - Fast: 4A, 4.2V, 100mA End-Current (CC-CV)       |
-| **Discharge**     | 2V End Voltage, 20A MAX Continuous Current         |
-| **Nominal Capacity** | 3.0 Ah                                         |
-| **Energy Density** | 240 (Wh/Kg)                                      |
+| Specification         | Value                                             |
+|-----------------------|---------------------------------------------------|
+| **Chemistry**         | Li[NiMnCo]O2 (H-NMC) / Graphite + SiO             |
+| **Nominal Voltage**   | 3.6 V                                             |
+| **Charge**            | Normal: 1.5A, 4.2V, 50mA End-Current (CC-CV)      |
+| **Discharge**         | 2V End Voltage, 20A MAX Continuous Current        |
+| **Nominal Capacity**  | 3.0 Ah                                            |
+| **Energy Density**    | 240 (Wh/Kg)                                       |
+
 ### Experimental Setup
 
-- A brand new **3Ah LG HG2 cell** was tested in an 8 cu.ft. thermal chamber with a **75amp, 5 volt Digatron Firing Circuits Universal Battery Tester**.
-- Voltage and current accuracy: **0.1% of full scale**.
-- Tests were performed at six different temperatures, with the battery charged at **1C rate** to 4.2V, with a 50mA cut-off.
+- A brand new **3Ah LG HG2 cell** was tested with a **75A, 5V Digatron Firing Circuits Universal Battery Tester** in a thermal chamber.
+- Tests conducted at multiple temperatures and varied charge-discharge cycles, including **drive cycles** (UDDS, HWFET, LA92, US06).
 
-### Tests Included:
-1. **Pulse Discharge HPPC Test**: 1C, 2C, 4C, and 6C discharge tests and 0.5C, 1C, 1.5C, and 2C charge tests.
-2. **C/20 Discharge and Charge Test**.
-3. **Discharge Tests at 0.5C, 2C, and 1C**: Tests performed before UDDS (Urban Dynamometer Driving Schedule) and Mix3 cycles.
-4. **Drive Cycles**: Includes UDDS, HWFET, LA92, and US06 cycles.
-5. **Temperature Variations**: Ambient temperatures of 40°C, 25°C, 10°C, 0°C, -10°C, and -20°C. Tests repeated with reduced regeneration current limits for temperatures below 10°C.
-
-### Dataset Structure
+### Data Structure
 
 The dataset includes both **raw** and **processed** data:
-- **Raw Data**: Stored in the folder `LG_HG2_Original_Dataset_McMasterUniversity_Jan_2020`. This data contains unprocessed voltage, current, temperature, and SOC measurements.
-- **Processed Data**: Found in `LG_HG2_Prepared_Dataset_McMasterUniversity_Jan_2020`, this data is normalized and contains five columns:
-  - Voltage (normalized)
-  - Current (normalized)
-  - Temperature (normalized)
-  - Rolling averages of voltage
-  - Rolling averages of current
+- **Raw Data**: Contains unprocessed voltage, current, temperature, and SOC measurements.
+- **Processed Data**: Pre-normalized and cleaned, featuring columns such as voltage, current, temperature, and their rolling averages.
 
-The processed data has been pre-normalized and cleaned to prepare it for training machine learning models.
+---
 
-### Data Columns:
+## ⚙️ Key Project Tasks
 
-The processed dataset used for training the LSTM model includes the following columns:
+1. **Data Preprocessing**: Normalize, add interaction features, and create temporal features.
+2. **Model Training**: LSTM model is trained for SOC estimation, capturing temporal patterns effectively.
+3. **Transfer Learning**: Fine-tune the model with PyBAMM-simulated data for new battery chemistry.
+4. **Model Evaluation**: Analyze SOC prediction performance across multiple temperatures.
+5. **Visualizations**: SOC prediction trends at different temperatures, highlighting accuracy and model adaptability.
 
-- `Voltage [V]`: Measured cell Voltage.
-- `Current [A]`: Measured current in amps.
-- `Temperature [°C]`: Temperature.
-- `Voltage Rolling [V]`: Rolling average of voltage over a defined window.
-- `Current Rolling [A]`: Rolling average of current over a defined window.
-- `SOC`: State of Charge, used as the target variable for prediction.
+This structured approach improves SOC estimation accuracy and adaptability, with potential applications across various battery chemistries and real-world conditions.
 
-The processed data has been normalized, and these features were engineered to improve the model’s ability to capture the dynamics of SOC over time. The rolling averages of voltage and current help capture the time-dependent trends, providing additional information for the LSTM model.
+### 📈 Data Columns
 
-## Requirements
+The processed dataset for training the LSTM model includes the following columns:
 
-The project is built using Python, and the following dependencies are required:
+- **`Voltage [V]`**: Cell voltage measurement.
+- **`Current [A]`**: Measured current in amps.
+- **`Temperature [°C]`**: Temperature of the battery.
+- **`Voltage Rolling [V]`**: Rolling average of voltage, capturing recent trends.
+- **`Current Rolling [A]`**: Rolling average of current, providing smoother current fluctuations.
+- **`SOC`**: State of Charge, used as the target variable for model predictions.
+
+These features, after normalization, enhance the model’s capability to detect SOC dynamics. The rolling averages offer insights into time-dependent patterns, which are essential for effective LSTM performance.
+
+---
+
+## 🔧 Requirements
+
+To run this project, ensure the following dependencies are installed:
 
 - `numpy`
 - `pandas`
 - `matplotlib`
-- `tensorflow` (for building and training the LSTM model)
-- `pybamm` (for battery simulation and modeling)
-- `sklearn` (for preprocessing and evaluation metrics)
+- `tensorflow` (for LSTM model training)
+- `pybamm` (for battery simulation)
+- `sklearn` (for preprocessing and metrics)
 
-## Installation
+## 🚀 Installation
 
 1. Clone the repository:
    ```bash
@@ -166,455 +178,331 @@ The project is built using Python, and the following dependencies are required:
     ```bash
     python train_lstm.py --data <data/> --epochs 50
   
-### Transfer Learning
+### 🔄 Transfer Learning
 To apply transfer learning, you can fine-tune the pre-trained LSTM model on a new dataset:
 - Load the pre-trained model.
 - Fine-tune the model:
    ```bash
     python transfer_learning.py --pretrained_model <models/lstm_model.h5> --data <path/dataset>
+    
+### 🧠 Model Architecture
 
-### Model Architecture
+The LSTM model for SOC estimation includes:
 
-The LSTM model used for SOC estimation consists of the following layers:
-
-- **Input Layer**: The model takes a sequence input with the shape corresponding to the time-series data (voltage, current, temperature, etc.).
-- **LSTM Layer**: 
-  - **Units**: 30
-  - **Purpose**: Captures the temporal dependencies in the SOC data.
+- **Input Layer**: Accepts sequences of time-series data (e.g., voltage, current, temperature).
+- **LSTM Layer**:
+  - **Units**: 30, capturing temporal dependencies in SOC.
 - **Dense Layer 1**:
-  - **Units**: 64
-  - **Activation**: ReLU
-  - **Regularization**: L2 regularization (`l2`)
-- **Dropout Layer 1**: 
-  - **Dropout Rate**: 0.3 (to prevent overfitting)
+  - **Units**: 64, **Activation**: ReLU, **Regularization**: L2.
+- **Dropout Layer 1**: **Rate**: 0.3.
 - **Dense Layer 2**:
-  - **Units**: 32
-  - **Activation**: ReLU
-  - **Regularization**: L2 regularization (`l2`)
-- **Dropout Layer 2**:
-  - **Dropout Rate**: 0.3
-- **Output Layer**:
-  - **Units**: 1
-  - **Activation**: Sigmoid (for regression output in the range [0, 1])
+  - **Units**: 32, **Activation**: ReLU, **Regularization**: L2.
+- **Dropout Layer 2**: **Rate**: 0.3.
+- **Output Layer**: **Units**: 1, **Activation**: Sigmoid (scaled for SOC output).
 
-### Model Compilation
+### ⚙️ Model Compilation
 
-The model is compiled using the following settings:
-- **Loss Function**: Mean Squared Error (MSE)
-- **Optimizer**: Adam optimizer with a learning rate of `0.001`
-- **Metrics**: MSE (Mean Squared Error)
+- **Loss**: Mean Squared Error (MSE).
+- **Optimizer**: Adam with learning rate `0.001`.
+- **Metrics**: MSE.
 
-### Training Strategy
+### 📈 Training Strategy
 
-The model is trained with early stopping and learning rate reduction strategies:
-- **Early Stopping**: Monitors validation loss, stops training if no improvement is observed for 3 consecutive epochs, and restores the best weights.
-- **Reduce Learning Rate on Plateau**: Reduces the learning rate by a factor of 0.2 if the validation loss does not improve for 2 epochs. The minimum learning rate is set to `0.0001`.
+- **Early Stopping**: Monitors validation loss, halting training after 3 epochs without improvement, restoring the best weights.
+- **Learning Rate Reduction**: Lowers the rate by 0.2 after 2 stagnant epochs (min rate: `0.0001`).
 
-### Training Configuration
+### 🔧 Training Configuration
 
-- **Epochs**: 50
-- **Batch Size**: 250
-- **Validation Data**: Provided validation dataset (`X_val_seq`, `y_val_seq`).
-- **Callbacks**: Early stopping and learning rate reduction are used as callbacks.
+- **Epochs**: 50.
+- **Batch Size**: 250.
+- **Validation Data**: Uses validation sequences (`X_val_seq`, `y_val_seq`).
+- **Callbacks**: Early stopping and learning rate adjustment.
 
-## Results
+## 📊 Results
 
-### Initial Training (LSTM with Sequence Length 10)
+### Initial Training (Sequence Length 10)
 
-The LSTM model was originally trained on the dataset with a sequence length of 10, and achieved the following results:
+- **MAE**: 0.0107 (average deviation from actual SOC).
+- **MSE**: 0.000216 (low prediction error).
+- **R²**: 0.997 (explains 99.7% of SOC variance).
 
-- **Mean Absolute Error (MAE)**: 0.0107  
-  - This indicates that, on average, the predictions were off by about 0.0107 units from the actual State of Charge (SOC).
-  
-- **Mean Squared Error (MSE)**: 0.000216  
-  - The MSE value reflects that the model has a low prediction error across the dataset.
-  
-- **R-squared (R²)**: 0.997  
-  - This shows that the model can explain 99.7% of the variance in the SOC data.
+### Extended Sequence (Length 100)
 
-### LSTM Training with Sequence Length 100
+- **MAE**: 0.0142 (slight increase with longer sequence).
+- **MSE**: 0.0003058 (moderate increase).
+- **R²**: 0.9957 (explains 99.57% variance).
 
-After increasing the sequence length to 100, the model achieved the following metrics:
+### Prediction Stability
 
-- **Mean Absolute Error (MAE)**: 0.0142  
-  - This indicates that the average error in SOC predictions slightly increased with the longer sequence length.
-  
-- **Mean Squared Error (MSE)**: 0.0003058  
-  - The MSE also slightly increased compared to the initial training.
-  
-- **R-squared (R²)**: 0.9957  
-  - The model still explains 99.57% of the variance in the data, which is a high level of accuracy.
+Increasing sequence length to 100 reduced fluctuations, especially during charge/discharge cycles, stabilizing SOC predictions over time.
 
-### Reduced Fluctuations in Prediction Plot
+### 📉 Loss Curves
 
-By increasing the sequence length from 10 to 100, the LSTM model demonstrated fewer fluctuations in the SOC prediction plot. The predictions have become more stable, particularly during charge and discharge cycles, indicating that the longer sequence helps the model capture more meaningful time dependencies.
-
-### Loss Curves
-
-Below is the plot showing the **Training and Validation Loss over Epochs**:
+**Training and Validation Loss Over Epochs**:
 
 ![Training and Validation Loss](results/loss_curve_image.png)
 
-This plot demonstrates that both training and validation loss decreased significantly in the early epochs and leveled off as training progressed, indicating stable model convergence.
+The loss curves demonstrate a rapid initial decrease, leveling off as training progressed, showing stable convergence.
 
-### Insights from the Predictions at 0°C
+### Insights from Predictions at Different Temperatures
 
-The following plot compares the **Actual vs Predicted SOC Values at 0 Degree Temperature**:
+The model’s SOC prediction performance demonstrates variance across different temperatures, with adjustments like increasing sequence length contributing to improved stability, particularly in challenging conditions.
 
-![Actual vs Predicted SOC](results/soc_predictions_image_0degree.png)
+### 0°C Predictions
 
-### Insights from the Predictions at 0°C
+![Actual vs Predicted SOC at 0°C](results/soc_predictions_image_0degree.png)
 
-The model's performance at **0°C** shows very strong predictive power, with an **R-squared score of 0.9957** after increasing the sequence length. This indicates that over 99% of the variance in the actual SOC values is captured by the model.
+- **R² Score**: 0.9957, capturing over 99% of the variance.
+- **Reduced Fluctuations**: Increasing the sequence length to 100 significantly minimized fluctuations in discharge regions.
+- **Robustness**: Despite the challenges of low temperatures, the model achieves an MAE of 1.42%, effectively managing SOC predictions at 0°C.
 
-- **Fluctuations**: When using a sequence length of 10, the predictions exhibited some fluctuations, especially in the discharge regions. After increasing the sequence length to 100, these fluctuations were significantly reduced, resulting in much smoother predictions.
-  
-- **Temperature Impact**: At **0°C**, battery behavior can be more volatile due to reduced efficiency and increased internal resistance. The model's ability to handle this challenging condition, especially after the adjustment in sequence length, demonstrates its robustness.
-
-- **Prediction Accuracy**: The **Mean Absolute Error (MAE)** of 0.0142 suggests that, on average, the model’s SOC predictions differ from the actual values by just **1.42%**, which is quite small, especially given the difficult conditions at lower temperatures.
-
-
-#### Predictions at 10°C
-- **Mean Absolute Error (MAE)**: 0.0127  
-- **Mean Squared Error (MSE)**: 0.0003229  
-- **R-squared (R²)**: 0.9947
-
-### Insights from the Predictions at 0°C, -10°C, 10°C, and 25°C
-
-- **Performance at 0°C**: The model performed well under the challenging condition of 0°C, with a **Mean Absolute Error** of 1.42%. This demonstrates the model's robustness under low-temperature conditions, which are typically more volatile for batteries.
-
-- **Performance at 25°C**: The model achieved a **Mean Absolute Error** of 2.04% at 25°C, with an **R-squared score** of 0.9924%. These results indicate that the model handles normal operating temperatures effectively, though some minor deviations were observed.
-
-- **Performance at +10°C**: The model was tested on **+10°C** data, yielding a **Mean Absolute Error** of 2.24% and an **R-squared score** of 0.9891%. While the model captures the general trend well, the higher error rate suggests that predictions could still benefit from further tuning, particularly in the discharge phases where deviations are more prominent.
-
-#### SOC Predictions at -10°C:
-Below is the full plot showing the **Actual vs Predicted SOC at -10°C**:
+### -10°C Predictions
 
 ![SOC Predictions at -10°C](results/soc_predictions_image_-10degree.png)
 
+- **Performance Challenges**: At -10°C, noise and fluctuations are more pronounced, especially in discharge cycles.
+- **Zoomed View**: The model slightly overreacts to input variations, suggesting potential improvements for smoother predictions under extreme cold.
 
-#### Fluctuations and Noise at -10°C:
-- **Significant Noise in Discharge**: Upon closer inspection, the **-10°C** predictions exhibit significant noise, especially in the discharge dynamic patterns. This suggests that the model is having difficulty accurately modeling battery behavior at this extreme low temperature, where the dynamics of the battery change more drastically.
+![Zoomed-In at -10°C](results/zoomed_plot_-10degC_image.png)
 
-- **Zoomed-In View of Discharge at -10°C**:
-  
-  ![Zoomed In Plot at -10°C](results/zoomed_plot_-10degC_image.png)
-  
-  The zoomed-in plot highlights the significant fluctuations observed during the discharge cycle. These fluctuations suggest that the model may be overreacting to small variations in input signals, particularly under harsh conditions like **-10°C**.
+### 10°C and 25°C Predictions
 
-#### Full SOC Predictions at +10°C:
-Below is the full plot showing the **Actual vs Predicted SOC at +10°C**:
+- **10°C**:
+  - **MAE**: 2.24%, **R²**: 0.9891
+  - Predicts well, though with slightly higher errors in discharge phases.
 
-![SOC Predictions at +10°C](results/soc_predictions_image_+10degree.png)
+- **25°C**:
+  - **MAE**: 2.04%, **R²**: 0.9924
+  - Stable predictions with minimal fluctuations, showing strong performance in normal conditions.
 
-This plot shows the overall performance of the model at **+10°C**. The model generally performs well, though some deviations and fluctuations are visible during the discharge cycle.
+### Comparative Analysis: Sequence Lengths 10 vs. 100
 
-#### Comparative Performance and Analysis:
+Increasing sequence length from 10 to 100 resulted in improved prediction stability:
 
-- **0°C vs -10°C**: Comparing the **0°C** and **-10°C** predictions, we observe more significant deviations at **-10°C**, particularly in the discharge dynamics. This indicates that the model may need further refinement to handle the more complex behavior of batteries at very low temperatures.
-  
-- **25°C Results**: The **25°C** results demonstrate that the model is more stable but some gap between actual and predicting at normal operating temperatures, as expected, with minor noise but overall strong performance.
-
-- **Potential Improvements**: 
-  - **Increase Sequence Length Further**: Increasing the sequence length beyond 100 (e.g., to 200 or higher) might help smooth out these fluctuations.
-  - **Data Smoothing**: Applying more aggressive data smoothing techniques (e.g., higher rolling averages) could help reduce noise in the input data.
-  - **Regularization**: Increasing the regularization strength in the Dense layers might prevent overfitting to short-term variations in the data.
-  - **Ensemble Methods**: Another approach could involve using ensemble models to average predictions and reduce noise.
-
-#### Predictions at 25°C
-- **Mean Absolute Error (MAE)**: 0.0204  
-- **Mean Squared Error (MSE)**: 0.0006394  
-- **R-squared (R²)**: 0.9924  
-
-### Insights from the Predictions at 25°C
-
-- The model performed reasonably well at **25°C**, achieving a **Mean Absolute Error** of 2.04% and an **R-squared** value of **0.9924**.
-  
-- **Prediction Fluctuations**: The **Prediction Error Plot** at 25°C shows that while the model performs well in general, some fluctuations exist during SOC estimation, especially during certain charge and discharge cycles.
-
-#### Prediction Error Plot at 25°C
-
-Below is the prediction error plot for the 25°C test:
-
- ![Prediction Error Plot at 25°C](results/prediction_error_plot_25degC_image.png)
-
-### SOC Predictions at 25°C
-
-Below is the plot showing the **Actual vs Predicted SOC at 25°C**:
-
- ![Actual vs Predicted SOC at 25°C](results/soc_predictions_image_25degree.png)
-
-### Comparative Analysis: Sequence Length 10 vs 100
-
-- **Fluctuations in Predictions**:  
-  - With a sequence length of 10, the SOC predictions exhibited more fluctuations, as seen in the plot below:
-  
-    ![Prediction with Sequence Length 10](results/soc_predictions_image_10.png)
-  
-  - After increasing the sequence length to 100, the fluctuations were significantly reduced, resulting in smoother predictions and more stable performance during both charge and discharge cycles:
-
-    ![Prediction with Sequence Length 100](results/soc_predictions_image.png)
-
-- **Fluctuations in Predictions**:  
-  - With a sequence length of 10, the SOC predictions exhibited more fluctuations, especially in the lower temperatures like 0°C.
-  - After increasing the sequence length to 100, the fluctuations were significantly reduced, resulting in smoother predictions across temperatures.
-
-- **Model Stability**:  
-  - The longer sequence length of 100 allowed the model to capture more temporal dependencies, leading to fewer oscillations in the predicted SOC values, especially in regions where the SOC remains stable (such as during long charging cycles).
+- **Sequence Length 10**: Predictions showed more fluctuations, particularly at lower temperatures.
+- **Sequence Length 100**: Provided smoother predictions with better temporal dependency capture, enhancing stability across both charge and discharge cycles.
 
 ### Extended Results and Conclusions
 
-#### Model Performance Overview:
-- The LSTM model demonstrated strong overall performance across a wide range of operating temperatures, from **-10°C** to **25°C**. However, the model's predictive capability shows temperature-dependent variability, which is particularly evident during discharge cycles.
+#### Model Performance Summary
+- The LSTM model performed well across various temperatures, from **-10°C** to **25°C**, with temperature-dependent accuracy, particularly during discharge cycles.
 
-#### Key Observations:
-1. **Consistency at Normal Temperatures (25°C)**:
-   - The model showed its best performance at **25°C**, with a **Mean Absolute Error** of 2.04% and an **R-squared score** of 0.9924%. This indicates that the model captures the general battery dynamics well in moderate conditions, which is expected given that most battery behaviors are more stable at room temperature.
-   - The predictions at 25°C exhibit smooth transitions with minimal noise, which indicates that the model is well-suited for environments where thermal volatility is minimal.
-   
-2. **Challenges at Low Temperatures (-10°C and 0°C)**:
-   - At **-10°C**, the model faced the most difficulty, exhibiting significant noise in the discharge regions and a **Mean Absolute Error** of 1.27%. The model tends to overreact to minor changes in input signals, leading to large fluctuations, particularly in the SOC predictions during discharge cycles.
-   - The performance at **0°C** was slightly better, with a **Mean Absolute Error** of 1.42%, but the model still exhibited fluctuations, albeit to a lesser extent than at -10°C.
-   - Low-temperature predictions are challenging due to the complex and nonlinear behavior of batteries under colder conditions, where the internal resistance increases and voltage drops more sharply. These behaviors are harder for the LSTM model to generalize without specific temperature-driven features or adjustments.
+#### Key Observations
 
-3. **Intermediate Temperature Performance (10°C)**:
-   - At **+10°C**, the model performed similarly to the lower temperatures, with a **Mean Absolute Error** of 2.24% and an **R-squared score** of 0.9891%. Despite capturing the general trend, the model's performance showed slight deterioration compared to predictions at 25°C.
-   - Like the lower temperatures, the model struggled to predict the discharge dynamics as precisely, which indicates that while the model is robust at higher temperatures, intermediate temperatures still exhibit challenges.
+1. **Optimal Performance at 25°C**
+   - **Accuracy**: At **25°C**, the model achieved its highest accuracy with an **MAE of 2.04%** and an **R² score of 0.9924%**, effectively capturing battery dynamics in stable, moderate conditions.
+   - **Smooth Transitions**: Predictions at this temperature displayed minimal noise, indicating the model’s suitability for scenarios with lower thermal volatility.
 
-#### Temperature-Dependent Behavior:
-- **Voltage-SOC Sensitivity**: Batteries exhibit different voltage-SOC behavior at lower temperatures. The SOC-to-voltage mapping becomes more non-linear, and this could explain why the model shows more fluctuation at **-10°C** and **+10°C**. Batteries typically exhibit a steeper voltage drop during discharge at low temperatures, which makes it harder for the model to capture the true state of charge accurately.
-- **Overfitting to Minor Variations**: The fluctuations observed, particularly at **-10°C**, suggest that the model may be overfitting to smaller variations in sensor data. This might occur because, at lower temperatures, there is more variability in the input features like voltage and current due to increased internal resistance. This leads the model to overreact to short-term changes instead of focusing on longer-term trends.
+2. **Challenges at Lower Temperatures (-10°C and 0°C)**
+   - **-10°C**: The model struggled with significant noise in discharge predictions, showing an **MAE of 1.27%**. Minor changes in inputs led to amplified fluctuations, particularly during discharge.
+   - **0°C**: Slightly better performance than at -10°C, with an **MAE of 1.42%**, though fluctuations were still present.
+   - **Explanation**: The model's difficulty at low temperatures likely stems from complex, nonlinear battery behavior, where internal resistance increases and voltage drops more sharply—factors that are challenging for LSTMs to generalize without temperature-specific tuning.
+
+3. **Performance at Intermediate Temperature (10°C)**
+   - **Accuracy**: At **10°C**, the model had an **MAE of 2.24%** and an **R² of 0.9891%**. While it captured the general trend, discharge dynamics were harder to predict accurately.
+   - **Insights**: Though the model is robust in stable, warmer conditions, performance at intermediate temperatures showed slight degradation, especially in discharge cycles.
+
+In summary, the LSTM model handles stable, moderate temperatures well but may require additional tuning or feature engineering to improve prediction stability at extreme low and intermediate temperatures.
+
+### Temperature-Dependent Behavior:
+
+- **Voltage-SOC Sensitivity**: Battery behavior changes significantly at lower temperatures, making the SOC-to-voltage mapping more nonlinear. This could explain the increased fluctuations at **-10°C** and **+10°C**, where steeper voltage drops during discharge make SOC estimation harder for the model to capture accurately.
+  
+- **Overfitting to Minor Variations**: At **-10°C**, the model appears to overfit minor variations in sensor data, likely due to increased internal resistance, which adds noise to inputs like voltage and current.
 
 #### Recommendations for Improvement:
+
 1. **Temperature-Specific Feature Engineering**:
-   - Introduce temperature as a feature in the LSTM model to allow it to better adapt to the varying battery behavior at different temperatures. This will help the model learn different SOC patterns based on the external temperature conditions, improving its adaptability across ranges.
-   
+   - Include temperature as a model feature to help it better adapt to battery behavior changes across different temperature ranges.
+
 2. **Increase Sequence Length**:
-   - Increasing the sequence length beyond 100 timesteps would allow the model to capture long-term dependencies in the data. This is particularly important for capturing the non-linear voltage dynamics at lower temperatures and during discharge phases.
-   
+   - Extending the sequence length beyond 100 timesteps could improve the model’s ability to capture long-term trends, especially helpful for nonlinear voltage dynamics in low temperatures.
+
 3. **Regularization**:
-   - Add more regularization to the model (e.g., L2 regularization or dropout) to prevent the model from overfitting to minor variations in the data, especially during low-temperature discharge phases.
-   
-4. **Data Smoothing and Noise Reduction**:
-   - Apply smoothing techniques like higher-order rolling averages on input data such as voltage and current to reduce the noise that may be affecting the model's predictions at extreme temperatures.
+   - Enhance regularization (e.g., L2, dropout) to minimize overfitting, especially under low-temperature conditions where data noise is higher.
+
+4. **Data Smoothing**:
+   - Apply data smoothing (e.g., rolling averages) on inputs like voltage and current to reduce prediction noise at extreme temperatures.
 
 5. **Ensemble Learning**:
-   - An ensemble of models trained on different subsets of the data or using different architectures could help smooth the final predictions by averaging out the errors from each model, potentially reducing the noise in discharge cycles.
+   - Use an ensemble of models trained on different subsets or architectures to average predictions, which could help reduce fluctuations in discharge cycles.
 
 #### Final Conclusion:
-The LSTM model provides promising results, especially at **25°C** and **0°C**, where it demonstrates strong predictive power. However, it struggles more at extreme low temperatures, particularly during the discharge phases at **-10°C**. With additional feature engineering, such as incorporating temperature as a model input and applying advanced regularization techniques, there is significant potential to further improve the model’s robustness, particularly under challenging conditions like low temperatures.
 
-### Comparison of LSTM Results vs Author's Original FNN Results
+The LSTM model performs well at **25°C** and **0°C** but faces challenges at very low temperatures, particularly during discharge at **-10°C**. Adding temperature as a model feature, increasing regularization, and implementing noise reduction could further improve robustness under challenging conditions.
 
-### Author's FNN Results:
-- **Prediction Lag**: In the original results, the FNN model shows a significant lag in SOC predictions, particularly during discharge cycles. This lag becomes more pronounced at lower temperatures (-10°C and 0°C).
-- **Accuracy at Lower Temperatures**: The FNN struggles more at lower temperatures, with deviations becoming larger, especially at -10°C, where the predicted SOC does not follow the target SOC well.
-- **Sharp Transitions**: The FNN model has difficulty capturing sharp transitions during the charge and discharge phases, which leads to larger errors during these transitions.
+### Comparison of LSTM vs FNN Models
 
-### LSTM Model Results:
-- **Better Temporal Capture**: The LSTM model shows much closer tracking of SOC values, especially during transitions between charging and discharging cycles. The LSTM architecture effectively captures the temporal dependencies in the data.
-- **Improved Performance Across Temperatures**: The LSTM model maintains better accuracy across all temperature conditions. The prediction lines in the plots follow the actual SOC much more closely, even at extreme temperatures (-10°C and 25°C), which were challenging for the FNN model.
-- **Smoother Predictions**: The LSTM model handles transitions more smoothly, especially during sharp changes, resulting in more accurate predictions, particularly during the dynamic SOC phases at varying temperatures.
-- **Smaller Deviations at Low Temperatures**: While some deviations still exist, particularly at -10°C, the overall error is smaller than that of the FNN model. This indicates the LSTM’s robustness to temperature fluctuations and the inherent ability to model sequential relationships in the data.
+#### Original FNN Results:
+- **Prediction Lag**: The FNN model had a notable lag, especially in discharge cycles, and struggled with accuracy at low temperatures (-10°C and 0°C).
+- **Difficulty with Transitions**: The FNN struggled with sharp transitions in SOC, resulting in significant errors.
+
+#### LSTM Model Results:
+- **Improved Temporal Capture**: The LSTM model tracked SOC transitions more closely, especially in charge/discharge cycles, benefiting from its ability to capture time dependencies.
+- **Better Performance Across Temperatures**: LSTM predictions were more accurate across different temperatures, with smoother transitions during dynamic SOC phases.
+- **Reduced Deviation at Low Temperatures**: While deviations exist at **-10°C**, they are smaller than those of the FNN model, showcasing the LSTM’s robustness in handling temperature fluctuations.
 
 ### Conclusion:
-The LSTM model significantly outperforms the original FNN model, particularly in areas where the FNN struggled. The LSTM model’s ability to capture time dependencies results in more accurate SOC predictions, especially during sharp transitions and across various temperature profiles. These improvements can be seen clearly in the aligned plot, where the predicted SOC closely follows the actual SOC with fewer deviations.
+The LSTM model significantly outperforms the FNN model, particularly in capturing temporal dependencies and adapting across various temperatures. This makes it better suited for SOC estimation across different conditions.
 
-This demonstrates that the LSTM model is more suited for SOC estimation, providing better accuracy and stability across different temperature conditions than the FNN model used by the original authors.
+#### SOC Prediction Comparisons:
+![Predicted vs Target SOC at Various Temperatures](results/original_plot.png)
 
-#### Comparison of SOC Prediction Using FNN vs LSTM Models Across Different Temperature Profiles:
-![Predicted vs target SOC for different ambient temperatures](results/original_plot.png)
-
-*Cited from author's original results shown above.*
-
-![Aligned Plot of SOC Predictions](results/aligned_plot.png)
+![Aligned SOC Predictions](results/aligned_plot.png)
 
 ### Transfer Learning Results
 
-### Transfer Learning Data
+#### Transfer Learning Data
 
-For the transfer learning phase, we utilized simulated data from a **different battery chemistry** to evaluate the adaptability of our SOC prediction model. The original dataset used for this project came from the **LG 18650HG2** Li-ion battery, contributed by Philip Kollmeyer, Carlos Vidal, Mina Naguib, and Michael Skells, and published on March 6, 2020 (DOI: 10.17632/cp3473x7xv.3). This 18650-type battery cell is widely known for its stable performance and reliability, making it popular in electric vehicles and power tools.
+For transfer learning, simulated data from the **LG M50LT** cell was used to assess the LSTM model's adaptability. While the original dataset came from the **LG 18650HG2** cell, the M50LT has distinct characteristics, including:
 
-In contrast, the transfer learning data was simulated using the **LG M50LT** cell chemistry. The LG M50LT battery cell is an **21700-type Li-ion cell**, which has different electrochemical characteristics compared to the 18650 cell. This cell type is optimized for energy density, making it suitable for applications requiring longer runtime, such as high-energy-density applications in electric vehicles. The LG M50LT offers higher capacity and operates with different charge/discharge dynamics, which can pose unique challenges for SOC estimation models trained on other battery chemistries.
-
-### LGM50LT Cell Specifications
-
-![LGM50LT Battery Cell](results/LGM50LT_image.png)
-
-The **LGM50LT** cell data introduces new conditions, enabling the model to generalize effectively:
 - **Chemistry**: Li-ion
-- **Nominal Capacity**: 5.0 Ah
+- **Capacity**: 5.0 Ah
 - **Voltage**: 3.6 V
-- **Type**: 21700 cell
+- **Cell Type**: 21700 (larger form factor than 18650)
 
-This 21700 form factor cell has a larger size compared to the 18650, providing a higher capacity and making it suitable for applications requiring extended runtime.Simulating data from a different battery helps test the model’s transfer learning capabilities by adapting to varied cell characteristics and performance.
+Simulating data from the M50LT cell tests the model’s adaptability to different chemistries and performance profiles, critical for real-world applications.
 
 #### Experiment Configuration
 
-To generate the new data, we used the **Doyle-Fuller-Newman (DFN) model** in PyBAMM and ran a simulation under controlled conditions for **10 cycles**, as follows:
+Using the **Doyle-Fuller-Newman (DFN) model** in PyBAMM, we configured the following experiment:
 
-1. **Discharge** at 0.4C until the cell voltage reaches 2.5 V
-2. **Rest** period for 10 minutes
-3. **Charge** at 0.5C until reaching 4.2 V
-4. **Hold** at 4.2 V until the current drops to 50 mA
-5. **Rest** for an additional 10 minutes after charging
+1. **Discharge** at 0.4C to 2.5V
+2. **Rest** for 10 minutes
+3. **Charge** at 0.5C to 4.2V
+4. **Hold** at 4.2V until current drops to 50 mA
+5. **Rest** for an additional 10 minutes
 
-This experimental setup was chosen to simulate realistic operating conditions for SOC estimation. By combining discharge, rest, charge, and hold phases, this configuration provides a comprehensive dataset that captures a range of SOC dynamics. The data simulated from the LG M50LT cell allows us to validate the robustness of our SOC prediction model in adapting to a different cell chemistry and performance characteristics through transfer learning.
+This setup provides comprehensive SOC dynamics, allowing the model to adapt its predictions to varied cell chemistries and operational conditions, validating the robustness of transfer learning for SOC estimation.
 
-### Transfer Learning Data Split and Normalization
+# 🔄 **Transfer Learning Data Split and Normalization**
 
-For the transfer learning phase, we used a **time-based split** to maintain the sequence integrity in this time-series dataset. The data was divided as follows:
+For transfer learning, a **time-based split** was applied to maintain sequence integrity in this time-series dataset:
 
-- **Training set**: 70% of the data, used to fine-tune the pre-trained LSTM model
-- **Validation set**: 15% of the data, for monitoring validation loss during training
-- **Test set**: 15% of the data, for evaluating the model’s final performance
+- **Training Set**: 70% of the data to fine-tune the pre-trained LSTM model
+- **Validation Set**: 15% of the data for monitoring validation loss
+- **Test Set**: 15% of the data for final evaluation
 
-Each segment was normalized separately, with the training set used to fit the scalers. This approach ensures that scaling factors are only based on the training data, preserving the validation and test data integrity and preventing data leakage.
+Each segment was normalized separately with scalers fitted on the training set to prevent data leakage. This time-based split aids the model's adaptation to the new **LG M50LT** battery dataset.
 
-This time-based approach supports our goal of transfer learning by allowing the model to adapt to the different characteristics of the LG M50LT battery dataset while preserving sequential dependencies.
+---
 
-Transfer learning was applied to fine-tune the pre-trained LSTM model on a different battery dataset. This approach aims to enhance the model's adaptability across various battery chemistries and operating conditions.
+### 🧠 **Transfer Learning Model Architecture**
 
-#### Model Architecture
+The transfer learning model builds upon a pre-trained LSTM network with adjustments to adapt it to new data:
 
-The transfer learning model builds upon a pre-trained LSTM network, with modifications made to adapt it to the new dataset:
+- **Frozen Layers**: Initial layers from the pre-trained model were frozen, retaining learned features.
+- **Transfer-Specific Layers**:
+  - **LSTM Layer**: 30 units to capture sequential dependencies.
+  - **Dense Layer**: 32 units with ReLU activation.
+  - **Dropout Layer**: Rate of 0.3 to reduce overfitting.
+  - **Output Layer**: A single unit with sigmoid activation to estimate SOC.
 
-- **Pre-trained Layers**: The first layers of the pre-trained LSTM model were frozen to retain the learned representations from the original training dataset. Specifically, all layers except the last three were frozen to balance between retaining learned features and adapting to new data.
-- **Custom Transfer Layers**:
-  - **LSTM Layer**: A new LSTM layer with 30 units, which processes the sequential data over the specified `sequence_length`.
-  - **Dense Layer**: A Dense layer with 32 units and ReLU activation to further capture non-linear relationships in the data.
-  - **Dropout Layer**: A Dropout layer with a rate of 0.3 to prevent overfitting by randomly deactivating neurons during training.
-  - **Output Layer**: A Dense output layer with a single unit and sigmoid activation, as the task is a regression to estimate SOC within a normalized range.
-
-  ```python
-    # Model architecture for transfer learning
-    transfer_model = Sequential([
-        LSTM(30, input_shape=(sequence_length, num_features)),
-        Dense(32, activation="relu"),
-        Dropout(0.3),
-        Dense(1, activation="sigmoid")
-    ])
-
-### Training and Fine-tuning
+```python
+# Transfer Learning Model
+transfer_model = Sequential([
+    LSTM(30, input_shape=(sequence_length, num_features)),
+    Dense(32, activation="relu"),
+    Dropout(0.3),
+    Dense(1, activation="sigmoid")
+])
+```
+### 🔧 Training and Fine-tuning
 The model was compiled with the Mean Squared Error (MSE) loss function, optimized using Adam with a low learning rate of 0.000005 to ensure gradual fine-tuning:
 
   ```python
      optimizer = Adam(learning_rate=0.000005)
      transfer_model.compile(optimizer=optimizer, loss="mse", metrics=["mse"])
   ```
-### Training Configuration
+### 🔧 **Training Configuration**
 
-- **Epochs**: The model was initially set to train for 100 epochs. However, the early stopping callback halted training at 59 epochs as the validation loss showed no further improvement.
-
+- **Epochs**: Initially set to 100, with training halted at 59 epochs due to early stopping as validation loss plateaued.
 - **Batch Size**: 128
+- **Validation Split**: Utilized to track validation loss during training.
 
-- **Validation Split**: Validation data was used to monitor the model’s performance during training.
+#### ⚙️ **Callbacks**
 
-#### Callbacks
+- **EarlyStopping**: Monitored `val_loss` with a patience of 3 epochs to avoid overfitting.
+- **ReduceLROnPlateau**: Reduced learning rate by 0.5 if `val_loss` showed no improvement over 2 epochs, with a minimum rate of 1e-6.
 
-- **EarlyStopping**: Monitored `val_loss` with patience set to 3 epochs to prevent overfitting.
-- **ReduceLROnPlateau**: Reduced learning rate by a factor of 0.5 if `val_loss` did not improve for 2 consecutive epochs, with a minimum learning rate of 1e-6.
+---
 
-### Training Loss and Validation Loss
+### 📉 **Training and Validation Loss**
 
-The model achieved a minimum training loss of 0.0013 and a validation loss of 0.000273 after 59 epochs.
+- Achieved a **training loss** of 0.0013 and a **validation loss** of 0.000273 by epoch 59.
 
-#### Model Loss Curve for Transfer Learning
-The training and validation loss curves over epochs during the transfer learning phase are shown below. The curve indicates how well the model was able to minimize error as it adapted to the new data.
-
+#### 📊 **Loss Curve Analysis**
 ![Transfer Learning Loss Curve](results/loss_curve_image_transfer_learning.png)
 
-### Transfer Learning Loss Curve Analysis
+- **Initial Drop**: Rapid loss reduction in early epochs indicates that the model quickly adapted to new data.
+- **Stabilization**: Losses began to stabilize around epoch 20, indicating diminishing returns from further training.
+- **Convergence**: The model's training and validation losses converged after epoch 30, showing minimal overfitting and effective adaptation to the new battery chemistry.
 
-The loss curve for the transfer learning process shows both the training and validation loss decreasing steadily across epochs:
+---
 
-- **Initial Rapid Drop**: In the early epochs, both training and validation loss decrease sharply. This suggests that the model quickly learned useful features from the new dataset and adjusted well to the new battery chemistry and operating conditions.
+### ⚡ **Feature Engineering for Enhanced Performance**
 
-- **Stabilization Phase**: Around epoch 20, the losses start to stabilize. This indicates that the model has effectively captured the significant patterns in the data, reaching a point where further training provides diminishing returns.
-
-- **Convergence**: The training and validation loss curves converge after epoch 30, suggesting that the model is generalizing well without overfitting. Both losses maintain low values as training progresses, and the early stopping mechanism halts training at epoch 59.
-
-This curve confirms the effectiveness of the transfer learning process, where the model adapts smoothly to new data with minimal overfitting. The achieved low final validation loss validates the improved predictive performance observed in the evaluation metrics.
-
-We initially experimented with a specific set of features, namely **Voltage [V]**, **Current [A]**, **Cell Temperature [C]**, **Avg_voltage**, and **Avg_current**. However, the model's performance on the new dataset was suboptimal with only these five features, showing limited improvement during transfer learning. 
-
+Initial attempts with core features (**Voltage [V]**, **Current [A]**, **Cell Temperature [C]**, **Avg_voltage**, **Avg_current**) yielded suboptimal results:
 - **Mean Absolute Error (MAE):** 0.2305
 - **R-squared (R²):** 0.2605
 
-These initial results showed limitations in the model's ability to accurately capture the SOC dynamics in the new dataset. To address this, we incorporated additional features, specifically:
+To improve results, the following features were added:
 
-To address this, we incorporated additional domain-specific features that significantly enhanced model accuracy:
+- **Voltage_Current_Interaction**: Helps capture SOC in complex battery cycles.
+- **Temp_Current_Interaction**: Critical for SOC prediction under varying load conditions.
+- **Temp_Rolling_Avg**: Smooths temperature fluctuations to highlight trends.
 
-- **Voltage_Current_Interaction**: Captures the interaction between voltage and current, which is especially useful for understanding SOC in complex battery cycles.
-- **Temp_Current_Interaction**: Captures the relationship between temperature and current, a critical factor in predicting SOC under varying thermal and load conditions.
-- **Temp_Rolling_Avg**: A rolling average of temperature, which helps smooth out sudden temperature fluctuations and allows the model to understand temperature trends over time.
-
-After adding these engineered features, the model's performance improved substantially. Here are the updated results after fine-tuning with transfer learning:
-
-- **Mean Absolute Error (MAE)**: 0.0117
+**Results After Fine-Tuning:**
+- **MAE**: 0.0117
 - **R-squared (R²)**: 0.9974
-- **Root Mean Squared Error (RMSE)**: 0.0165 (1.65%)
+- **RMSE**: 0.0165
 
-These results show a marked improvement compared to the initial attempt with only the five core features. The additional features allowed the LSTM model to capture more nuanced relationships within the battery data, particularly during dynamic changes in SOC. 
+This significant improvement underscores the effectiveness of additional features for capturing nuanced relationships.
 
-**Significance of RMSE in SOC Prediction**:
-The **Root Mean Squared Error (RMSE)** is particularly significant for SOC prediction because it measures the model’s accuracy in a way that penalizes larger errors more heavily. RMSE provides insights into the average deviation between predicted and actual SOC values, helping identify models that perform reliably with fewer substantial errors. Since RMSE is in the same unit as SOC, it offers an intuitive measure of accuracy, making it easier to assess how close the predictions are to real values. Lower RMSE directly translates to more accurate SOC readings, which is critical for effective battery management, safety, and efficiency.
-
-An RMSE of 0.0165 (or 1.65% in percentage terms if we consider the target SOC range from 0 to 1) indicates that, on average, the model's predictions differ from the actual SOC values by about 1.65%. This low RMSE suggests that the model is highly accurate in predicting SOC after fine-tuning with additional features, making it suitable for applications that require precise SOC estimation, such as battery management systems.
-
-Low RMSE values are desirable because they indicate less variance between predicted and actual values, reflecting the model’s reliability and robustness across different battery conditions.
-
-This improved performance suggests that the additional engineered features enabled the model to better adapt to variations in SOC, resulting in a robust and reliable prediction model suitable for cross-battery scenarios.
-
-
-#### Prediction Plot for Transfer Learning
-The plot below shows the model's predicted SOC values versus the actual SOC values over a range of samples at various temperature conditions. The close alignment between the predicted and actual values highlights the effectiveness of the transfer learning approach.
-
+#### 📈 **Prediction Plot for Transfer Learning**
 ![Actual vs Predicted SOC for Transfer Learning](results/soc_predictions_transfer_learning.png)
 
-##### Key Observations:
-- **High Alignment**: The predicted SOC values closely follow the actual SOC values throughout the charge and discharge cycles, showing only minimal deviations. This indicates that the model has effectively captured the complex relationships between features and SOC.
-- **Charge and Discharge Cycles**: During both the charge and discharge phases, the predicted values align well with the actual values, especially in the more linear regions. This suggests that the model is well-suited for following the gradual changes in SOC typical of these cycles.
-- **Transition Points**: At points of rapid SOC change, such as near the end of charge and discharge, slight deviations are noticeable between the predicted and actual SOC values. These deviations are expected in battery data, especially in highly dynamic regions where changes are more abrupt.
-- **Overall Stability**: The plot shows a high degree of stability, with minimal oscillations or noise in the predicted values. This reflects the robustness of the transfer learning approach, where the model has effectively generalized from the pre-trained data to the new dataset.
+**Observations:**
+- **High Alignment**: Predicted SOC closely matches actual SOC across charge and discharge cycles.
+- **Minimal Deviations**: Small deviations are observed only during rapid transitions.
+- **Overall Stability**: Minimal oscillations in predicted values, showing robust generalization to new data.
 
-This level of accuracy, especially around challenging transition points, highlights the effectiveness of transfer learning. The model’s ability to capture SOC dynamics in both steady and rapidly changing phases makes it a valuable tool for applications requiring precise SOC estimations under varying conditions.
+---
 
-## 1. Comparison of Metrics Before and After Transfer Learning
+## 📊 **Performance Metrics: Before vs. After Transfer Learning**
 
-| Metric                     | 0°C Before Transfer | -10°C Before Transfer | 10°C Before Transfer | 25°C Before Transfer | After Transfer Learning (25°C) |
-|----------------------------|---------------------|------------------------|----------------------|----------------------|---------------------------------|
-| **Mean Absolute Error (MAE)** | 0.0142              | 0.0157                 | 0.0224               | 0.0204               | 0.0117                          |
-| **Mean Squared Error (MSE)**  | 0.000315            | 0.000405               | 0.0003229            | 0.0006394            | 0.000273                        |
-| **Root Mean Squared Error (RMSE)** | 0.0178         | 0.0201                 | 0.0180               | 0.0253               | 0.0165                          |
-| **R-squared (R²)**         | 0.9932              | 0.9910                 | 0.9891               | 0.9924               | 0.9974                          |
+| Metric                     | 0°C (Before) | -10°C (Before) | 10°C (Before) | 25°C (Before) | After Transfer Learning (25°C) |
+|----------------------------|--------------|----------------|---------------|---------------|---------------------------------|
+| **MAE**                    | 0.0142       | 0.0157         | 0.0224        | 0.0204        | 0.0117                          |
+| **MSE**                    | 0.000315     | 0.000405       | 0.0003229     | 0.0006394     | 0.000273                        |
+| **RMSE**                   | 0.0178       | 0.0201         | 0.0180        | 0.0253        | 0.0165                          |
+| **R²**                     | 0.9932       | 0.9910         | 0.9891        | 0.9924        | 0.9974                          |
 
-## 2. Percentage Improvement with Transfer Learning
+## 🔍 **Improvement with Transfer Learning**
 
-- **MAE Reduction**: From 0.0204 (before) to 0.0117 (after) → **42.6% decrease**
-- **MSE Reduction**: From 0.0006394 (before) to 0.000273 (after) → **57.3% decrease**
-- **R² Increase**: From 0.9924 to 0.9974 → **0.5% improvement**
+- **MAE Reduction**: 42.6%
+- **MSE Reduction**: 57.3%
+- **R² Improvement**: 0.5%
 
-These results highlight the significant enhancement in model performance after applying transfer learning, particularly in handling stable 25°C conditions, which is crucial for high-precision applications in battery management systems.
+These enhancements confirm the model’s improved performance, particularly for stable 25°C conditions, making it highly applicable for precision SOC estimations.
 
+---
 
-## Contributing
+## 🤝 **Contributing**
 
-Contributions to this project are welcome. If you'd like to contribute, please open an issue or submit a pull request.
+Contributions are welcome! Please open an issue or submit a pull request to help improve this project.
 
-## License
+## 📜 **License**
 
-This project is licensed under the MIT License.
+Licensed under the MIT License.
 
-## References
+## 📚 **References**
 
-This project uses the **LG 18650HG2 Li-ion Battery Data**, which was collected and made publicly available by:
+This project utilizes **LG 18650HG2 Li-ion Battery Data**, published by:
 
-- **Philip Kollmeyer**, **Carlos Vidal**, **Mina Naguib**, and **Michael Skells**.
-- McMaster University, Hamilton, Ontario, Canada.
-- Published: 6 March 2020.
-- DOI: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3)
+- **Philip Kollmeyer**, **Carlos Vidal**, **Mina Naguib**, **Michael Skells**.
+- **McMaster University, Ontario, Canada** (DOI: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3))
 
-If you use this data for any purpose, please make sure to cite it appropriately as:
+If you use this data, please cite as follows:
 
-> Vidal, C., Kollmeyer, P., Naguib, M., & Skells, M. (2020). Robust xEV Battery State-of-Charge Estimator Design using Deep Neural Networks, Mendeley Data. DOI: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3)
+> Vidal, C., Kollmeyer, P., Naguib, M., & Skells, M. (2020). "Robust xEV Battery SOC Estimator Using Deep Neural Networks," Mendeley Data, DOI: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3).
