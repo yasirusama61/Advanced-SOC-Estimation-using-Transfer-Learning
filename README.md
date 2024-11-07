@@ -50,6 +50,8 @@ This repository provides an advanced approach to **State of Charge (SOC) Estimat
 - [License](#license)
 - [References](#references)
 
+---
+
 ## 🔍 Project Overview
 
 The goal of this project is to accurately estimate the State of Charge (SOC) of lithium-ion batteries using cutting-edge machine learning techniques, with a focus on **Transfer Learning**. By leveraging an LSTM model, this project captures the temporal patterns in battery data, improving the model’s predictive accuracy. The project stands out by successfully transferring knowledge from one battery dataset to another, enabling the model to adapt to new battery chemistries and conditions.
