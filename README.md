@@ -93,6 +93,8 @@ The primary dataset is the **LG 18650HG2 Li-ion Battery Data** provided by Phili
 - **Publication Date**: March 6, 2020.
 - **DOI**: [10.17632/cp3473x7xv.3](https://doi.org/10.17632/cp3473x7xv.3).
 
+![Battery Specifications and Dimensions](results/image.png)
+
 ### Battery Main Specifications
 
 | Specification         | Value                                             |
