@@ -187,7 +187,7 @@ To apply transfer learning, you can fine-tune the pre-trained LSTM model on a ne
 - Load the pre-trained model.
 - Fine-tune the model:
    ```bash
-    python transfer_learning.py --pretrained_model <models/lstm_model.h5> --data <path/dataset>
+    python src/transfer_learning.py --pretrained_model <models/lstm_model.h5> --data <path/dataset>
     
 ### 🧠 Model Architecture
 
