@@ -70,7 +70,7 @@ This approach to SOC estimation offers significant benefits for applications in 
 
 The workflow for the project is visualized below:
 
-![Project Workflow Flowchart](results/flowchart-image.png)
+![Project Workflow Flowchart](results/flowchart-image_(2).png)
 
 1. **Data Collection**: Collect LG 18650HG2 battery data (voltage, current, temperature, SOC).
 2. **Data Preprocessing**: Normalize, add interaction terms, and create temporal features.
